@@ -1,0 +1,8 @@
+<div class="social col-12 col-lg-9 d-flex flex-row align-items-center justify-content-around justify-content-lg-end ml-auto">
+    <div class="px-2"> Siga nas redes sociais </div>
+    <div class="px-2">
+        <a class="mx-2" href="{{social.absolute}}" target="_blank" *ngFor="let social of socialItem">
+            <i ng-if="social.icon" class="{{social.icon}}"></i>
+        </a>
+    </div>
+</div>

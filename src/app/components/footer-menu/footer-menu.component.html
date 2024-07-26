@@ -1,0 +1,139 @@
+<nav class="footer-menu">
+    <div class="container">
+        <div class="row menu-with-sub">
+            <div
+                class="menu-item col-12 col-lg-3"
+                *ngFor="let item of menuItems; let idx = index"
+            >
+                <button
+                    class="menu-subitem-title mb-3"
+                    data-toggle="collapse"
+                    [attr.data-target]="'#menu' + idx"
+                    aria-expanded="false"
+                    aria-controls="itemOne"
+                >
+                    <strong> {{ item.title }} </strong>
+                    <img
+                        class="img-fluid mx-3"
+                        src="../../../assets/img/icon_arrow_red.png"
+                        alt=""
+                    />
+                </button>
+                <div id="menu{{ idx }}" class="menu-card collapse">
+                    <div *ngFor="let subitem of item.below">
+                        <div
+                            class="menu-subitem"
+                            [class.has-subitems]="subitem.below?.length"
+                        >
+                            <div *ngIf="!subitem.external && subitem.below">
+                                {{ subitem.title }}
+                            </div>
+                            <a
+                                *ngIf="!subitem.external && !subitem.below"
+                                routerLink="/{{ subitem.alias }}"
+                            >
+                                {{ subitem.title }}
+                            </a>
+                            <a
+                                *ngIf="subitem.external"
+                                href="{{ subitem.absolute }}"
+                            >
+                                {{ subitem.title }}
+                            </a>
+                        </div>
+                        <div
+                            *ngFor="let belowItem of subitem.below"
+                            class="menu-subitem subtitle"
+                        >
+                            <a
+                                *ngIf="!belowItem.external"
+                                routerLink="/{{ belowItem.alias }}"
+                            >
+                                {{ belowItem.title }}
+                            </a>
+                            <a
+                                *ngIf="belowItem.external"
+                                href="{{ belowItem.absolute }}"
+                            >
+                                {{ belowItem.title }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div
+                class="menu-item col-12 col-lg-3"
+                *ngFor="let item of menuItemsOther; let idx = index"
+            >
+                <a
+                    *ngIf="!item.below"
+                    routerLink="/{{ item.options.fragment }}"
+                >
+                    <button class="menu-subitem-title mb-3">
+                        <strong> {{ item.title }} </strong>
+                        <img
+                            class="img-fluid mx-3"
+                            src="../../../assets/img/icon_arrow_red.png"
+                            alt=""
+                        />
+                    </button>
+                </a>
+                <div *ngIf="item.below">
+                    <button
+                        class="menu-subitem-title mb-3"
+                        data-toggle="collapse"
+                        [attr.data-target]="'#menuOther' + idx"
+                        aria-expanded="false"
+                        aria-controls="itemOne"
+                    >
+                        <strong> {{ item.title }} </strong>
+                        <img
+                            class="img-fluid mx-3"
+                            src="../../../assets/img/icon_arrow_red.png"
+                            alt=""
+                        />
+                    </button>
+                </div>
+                <div id="menuOther{{ idx }}" class="menu-card collapse">
+                    <div *ngFor="let subitem of item.below">
+                        <div class="menu-subitem">
+                            <a
+                                *ngIf="!subitem.external"
+                                routerLink="/{{ subitem.alias }}"
+                            >
+                                {{ subitem.title }}
+                            </a>
+                            <a
+                                *ngIf="subitem.external"
+                                href="{{ subitem.absolute }}"
+                            >
+                                {{ subitem.title }}
+                            </a>
+                        </div>
+                        <div
+                            *ngFor="let belowItem of subitem.below"
+                            class="menu-subitem subtitle"
+                        >
+                            <a
+                                *ngIf="!belowItem.external"
+                                class="menu-subitem"
+                                routerLink="/{{ belowItem.alias }}"
+                            >
+                                {{ belowItem.title }}
+                            </a>
+                            <a
+                                *ngIf="belowItem.external"
+                                class="menu-subitem"
+                                href="{{ belowItem.absolute }}"
+                            >
+                                {{ belowItem.title }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,101 @@
+[
+    {
+        "key": "a38b19ae-a68b-4416-bcde-08f888e01fe3",
+        "title": "Sala de Imprensa",
+        "description": null,
+        "uri": "",
+        "alias": "",
+        "external": false,
+        "absolute": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/",
+        "relative": "\/drupal\/web\/",
+        "existing": true,
+        "weight": "-50",
+        "expanded": false,
+        "enabled": true,
+        "uuid": null,
+        "options": [],
+        "below": [
+            {
+                "key": "3315784e-87ba-4a89-8955-03719852756e",
+                "title": "Corporativo",
+                "description": null,
+                "uri": "",
+                "alias": "",
+                "external": false,
+                "absolute": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/",
+                "relative": "\/drupal\/web\/",
+                "existing": true,
+                "weight": "-50",
+                "expanded": false,
+                "enabled": true,
+                "uuid": null,
+                "options": [],
+                "below": [
+                    {
+                        "key": "7051c475-2d8c-42b0-a52d-8348e54c6ec7",
+                        "title": "Honda Automoveis",
+                        "description": null,
+                        "uri": "http:\/\/www.honda.com\/automoveis",
+                        "alias": null,
+                        "external": true,
+                        "absolute": "http:\/\/www.honda.com\/automoveis",
+                        "relative": "http:\/\/www.honda.com\/automoveis",
+                        "existing": true,
+                        "weight": "-50",
+                        "expanded": false,
+                        "enabled": true,
+                        "uuid": null,
+                        "options": {
+                            "menu_icon": {
+                                "fid": false
+                            },
+                            "external": true
+                        }
+                    },
+                    {
+                        "key": "5c27b6b1-fee3-4f1f-a7b5-3fdaa43e938b",
+                        "title": "Honda Motos",
+                        "description": null,
+                        "uri": "http:\/\/www.honda.com\/motos",
+                        "alias": null,
+                        "external": true,
+                        "absolute": "http:\/\/www.honda.com\/motos",
+                        "relative": "http:\/\/www.honda.com\/motos",
+                        "existing": true,
+                        "weight": "-49",
+                        "expanded": false,
+                        "enabled": true,
+                        "uuid": null,
+                        "options": {
+                            "menu_icon": {
+                                "fid": false
+                            },
+                            "external": true
+                        }
+                    }
+                ]
+            },
+            {
+                "key": "f511f77a-634b-4606-b50e-15dff91f3d87",
+                "title": "Honda Spirit",
+                "description": null,
+                "uri": "http:\/\/www.honda.com",
+                "alias": null,
+                "external": true,
+                "absolute": "http:\/\/www.honda.com",
+                "relative": "http:\/\/www.honda.com",
+                "existing": true,
+                "weight": "-49",
+                "expanded": false,
+                "enabled": true,
+                "uuid": null,
+                "options": {
+                    "menu_icon": {
+                        "fid": false
+                    },
+                    "external": true
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,74 @@
+@import "../../../assets/scss/variables";
+
+:host {
+    position: absolute;
+    top: 4rem;
+    width: 230px;
+    left: 0;
+
+    @media (max-width: $sm) {
+        top: -18rem;
+    }
+
+    .modal-files-size-content {
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        background-color: white;
+        border-radius: $radius;
+        border-top: 2px solid $orange;
+        padding: 0.5rem 1.5rem;
+        position: relative;
+
+        .arrow {
+            top: -1.5rem;
+            bottom: unset;
+            left: 6rem;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 13px solid transparent;
+            border-left: 14px solid $orange;
+            border-bottom: 13px solid transparent;
+            margin-left: 7px;
+            transform: rotate(-90deg);
+
+            @media (max-width: $sm) {
+                top: unset;
+                bottom: -1.5rem;
+                transform: rotate(90deg);
+            }
+        }
+
+        .sizes-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: self-start;
+
+            li {
+                width: 100%;
+                padding: 1rem 0;
+                border-bottom: 1px solid #dddddd;
+                display: flex;
+                justify-content: start;
+                align-items: self-start;
+
+                &:last-child {
+                    border: 0;
+                }
+
+                .link-size {
+                    color: $orange !important;
+                    border-bottom: 1px solid $orange;
+                    font-size: 14px;
+                    margin-left: 1rem;
+                }
+
+                span {
+                    color: #bab8b8;
+                    font-size: 14px;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}

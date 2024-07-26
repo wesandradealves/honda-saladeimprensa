@@ -1,0 +1,61 @@
+/* Descriptive colors*/
+$black: #000000;
+$gray-200: #292929;
+$gray-300: #3d3d3e;
+$gray-500: #5c5c5c;
+$gray-700: #777777;
+$orange: #cd2b14;
+$red: #b5000a;
+$red-500: #cd0000;
+$white-smoke: #f2f2f2;
+$white: #ffffff;
+/*Functional colors*/
+$color-primary: $white;
+$color-secondary: $orange;
+// Text
+$color-title: $gray-300;
+$color-title-light: $color-primary;
+$color-text: $gray-500;
+$color-text-light: $color-primary;
+// Backgrounds
+$color-bg: $color-primary;
+$color-bg-secondary: $color-secondary;
+$color-bg-modal: rgba($black, 0.5);
+// Borders
+$rule-primary: 1px solid $color-primary;
+$rule-secondary: 1px solid rgba($color-text, 0.45);
+$rule-danger: 1px solid $red;
+$radius: calc(0.315rem - 1px);
+// Font Family
+$font-stack-primary: "Roboto", sans-serif;
+$font-stack-condensed: "Oswald", sans-serif;
+$font-stack-mobile: Helvetica, sans-serif;
+// Font Size
+$font-xs: 0.75rem;
+$font-sm: 0.875rem;
+$font-md: 1rem;
+$font-lg: 1.875rem;
+$font-xl-mobile: 2.125rem;
+$font-xl: 3rem;
+$font-xxl: 5rem;
+// Letter Spacings
+$space-xs: 0.015ch;
+$space-sm: 0.03ch;
+$space-md: 0.0325ch;
+$space-lg: 0.05ch;
+/*Breakpoints*/
+$xs: 480px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1550px;
+$full: 1920px;
+$quad: 2550px;
+// Box Shadow
+$shadow-difuse: 0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.16),
+    0 8px 8px rgba(0, 0, 0, 0.2);
+$shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+    0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+$shadow-layered: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 2px rgba(0, 0, 0, 0.15), 0 4px 4px rgba(0, 0, 0, 0.15),
+    0 8px 8px rgba(0, 0, 0, 0.15);

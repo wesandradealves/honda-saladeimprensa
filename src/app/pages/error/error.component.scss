@@ -1,0 +1,62 @@
+.error {
+    // padding-top: 217px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .block-error {
+        position: absolute;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+
+        h3 {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 50px;
+            color: #3D3D3E;
+            margin-bottom: 7px;
+            z-index: 1;
+        }
+
+        .text {
+            font-size: 16px;
+            line-height: 21px;
+            color: #3D3D3E;
+            z-index: 1;
+        }
+    }
+
+    .bg {
+        z-index: 0;
+    }
+    // RESPONSIVE ADJUSTS
+    // @ThiagoAndriotti
+    min-height: 70vh;
+    .bg {
+        svg {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    }
+    @media(max-width: 480px) {
+        .block-error {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+    }
+    @media(min-width: 992px) {
+        min-height: 72vh;
+    }
+    @media(min-width: 1200px) {
+        min-height: 76vh;
+    }
+    @media(min-width: 1600px) {
+        min-height: 83vh;
+    }
+
+}

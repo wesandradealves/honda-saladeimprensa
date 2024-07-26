@@ -1,0 +1,11 @@
+
+
+<div  [ngClass]="{'add' : insideModal===false, 'inside' : insideModal, 'with-label': label}" (click)="download()">
+    <div class="download">
+        <img src="../../../assets/img/download.svg" class="img-fluid ">
+    </div>
+    <div class="btn-download" *ngIf="label">
+        {{label}}
+    </div>
+</div>
+<a href="{{zip}}" #linkZip id="link-zip-{{zip}}" class="link-zip" download>{{zip}}</a>

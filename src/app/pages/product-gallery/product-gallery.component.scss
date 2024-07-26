@@ -1,0 +1,57 @@
+@import "./../../components/last-releases-list/last-releases-list.component";
+.desktop-wrapper{
+    display: block!important;
+}
+.title-section {
+    font-size: 40px;
+    font-weight: bold;
+    color: #3d3d3e;
+    line-height: 53px;
+    margin-bottom: 28px;
+    text-align: center;
+
+    span {
+        color: #CD2B14;
+    }
+}
+
+.releases-list {
+    .box {
+        .image {
+            position: relative;
+
+            @media (max-width: $sm) {
+                margin-right: 1rem;
+                max-width: 60%;
+            }
+
+            .icon-play {
+                position: absolute;
+                margin: auto;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 48px !important;
+                height: 48px !important;
+            }
+        }
+
+        .info {
+            .actions {
+                .download {
+                    @media (max-width: $lg) {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .see-more {
+        width: 315px;
+
+        @media (max-width: $lg) {
+            max-width: 100%;
+        }
+    }
+}

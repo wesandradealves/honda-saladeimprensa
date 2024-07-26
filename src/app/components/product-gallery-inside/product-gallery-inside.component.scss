@@ -1,0 +1,95 @@
+@import "./../../../assets/scss/variables";
+
+.product-gallery {
+    .releases {
+        .releases-list {
+            .box {
+                .image {
+                    position: relative;
+
+                    .icon-play {
+                        position: absolute;
+                        margin: auto;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+                
+                .info {
+                    .actions {
+                        .download {
+                            @media (max-width: $lg) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .see-more {
+                width: 315px;
+
+                @media (max-width: $lg) {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+    .header-gallery {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #D3D3D3;
+        position: relative;
+    
+        .title {
+            font-weight: bold;
+            font-size: 28px;
+            line-height: 37px;
+            color: #3D3D3E;
+    
+            span {
+                color: #CD2B14;
+            }
+        }
+    
+        .add {
+           .btn-add {
+                font-size: 12px;
+                line-height: 16px;
+                color: #CD2B14;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #CD2B14;
+            }
+        }
+    
+        .counter {
+            display: none;
+            font-size: 22px;
+            line-height: 29px;
+    
+            span {
+                color: #cd2b14;
+                font-weight: bold;
+            }
+        }
+    
+        hr{
+            border-color: #CD2B14;
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 45px;
+            margin: 0px;
+    
+        }
+    }
+}
+
+@import "./../../components/last-releases/last-releases.component";

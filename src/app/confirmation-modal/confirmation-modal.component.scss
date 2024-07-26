@@ -1,0 +1,58 @@
+@import "./../../assets/scss/variables";
+
+.confirm-modal .modal-content {
+    border-top: 2px solid $color-secondary;
+  }
+ 
+  .confirm-modal .close {
+    color: white;
+  }
+  .light-blue-backdrop {
+    background-color: #5cb3fd;
+  }
+  .confirm-modal{
+      width: 23rem !important;
+      margin:24vh auto;
+      z-index: 9999 !important
+  }
+  .modal-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px !important;
+    .icon{
+      font-size: 3.85rem;
+      color: $color-secondary;
+      font-weight: bolder;
+      margin-top: 0.7rem;
+      margin-bottom: 0.1rem;
+    }
+    p{
+      text-align: center;
+      font-size: 1.45rem;
+      font-weight: bold;
+      line-height: 1.2;
+      
+    }
+    .btn{
+      font-family: $font-stack-primary !important;
+      background-color: $color-secondary;
+      border:none;
+      color:$color-primary;
+      font-size: 0.9rem;
+      width: 65%;
+      padding: 0.65rem 0px;
+      margin-top: 8%;
+      font-weight:lighter !important;
+      margin-bottom: 7%;
+    }
+    .cancel-button{
+      padding: 0px;
+      border-bottom: 1px solid $color-secondary;
+      color: $color-secondary;
+      font-size: 0.8rem;
+      font-weight: lighter !important;
+      margin-bottom: 8%;
+
+    }
+  }

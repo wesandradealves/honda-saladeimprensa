@@ -1,0 +1,94 @@
+@import "../../../assets/scss/variables";
+
+/*Cookies Notification*/
+.info-notification {
+        display: none;
+        position: fixed;
+        background-color: rgba($black, 0.9);
+        min-height: 8.75rem;
+        z-index: 999999;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        &.active {
+            display: initial !important;
+        }
+        .container-fluid {
+            // padding: 1.5rem;
+
+            .title {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                padding-right: 0px;
+                h3 {
+                    color: $color-primary;
+                    font-size: 24px;
+                    font-weight: bold;
+                    line-height: 40px;
+                    padding-right: 20px;
+                    @media (max-width: $lg) {
+                        font-size: 17px;
+                        padding-right: 0px;
+                    }
+                }
+                @media (min-width: $lg) {
+                    h3 {
+                        font-size: $font-lg;
+                        border-right: 1px solid #fff;
+                    }
+                }
+
+                img {
+                    @media (max-width: $lg) {
+                        max-width: 56px;
+                    }
+                }
+            }
+            .text {
+                color: $color-primary;
+                font-size: 12px;
+                vertical-align: center;
+                text-align: justify;
+                padding-left: 50px;
+                @media (max-width: $lg) {
+                    padding-left: 15px;
+                }
+                a {
+                    text-decoration: underline $color-primary !important;
+                }
+                @media (min-width: $xxl) {
+                    padding-left: 1rem;
+                    padding-right: 6rem;
+                }
+                p {
+                    margin: 1em 0;
+                }
+            }
+            .btn-close {
+                button {
+                    background: #ed1c24;
+                    border-bottom: solid 1px #8d0005;
+                    border-radius: $radius;
+                    width: 8.75rem;
+                    height: 2.5rem;
+                    color: $color-primary;
+                    font-size: 16px;
+                    @media (min-width: $lg) {
+                        width: 13.75rem;
+                    }
+                    @media (max-width: $lg) {
+                        max-width: 100%;
+                    }
+
+                    &:hover {
+                        background: #ffffff;
+                        border-bottom: solid 1px #d8d8d8;
+                        color: #cc0000;
+                    }
+                }
+            }
+        }
+
+}

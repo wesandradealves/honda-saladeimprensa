@@ -1,0 +1,445 @@
+{
+    "pages": [
+        {
+            "key": "a38b19ae-a68b-4416-bcde-08f888e01fe3",
+            "title": "Sala de Imprensa",
+            "description": null,
+            "uri": "",
+            "alias": "",
+            "external": false,
+            "absolute": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/",
+            "relative": "\/drupal\/web\/",
+            "existing": true,
+            "weight": "-50",
+            "expanded": false,
+            "enabled": true,
+            "uuid": null,
+            "options": [],
+            "below": [
+                {
+                    "key": "3315784e-87ba-4a89-8955-03719852756e",
+                    "title": "Corporativo",
+                    "description": null,
+                    "uri": "",
+                    "alias": "",
+                    "external": false,
+                    "absolute": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/",
+                    "relative": "\/drupal\/web\/",
+                    "existing": true,
+                    "weight": "-50",
+                    "expanded": false,
+                    "enabled": true,
+                    "uuid": null,
+                    "options": [],
+                    "below": [
+                        {
+                            "key": "7051c475-2d8c-42b0-a52d-8348e54c6ec7",
+                            "title": "Honda Automoveis",
+                            "description": null,
+                            "uri": "http:\/\/www.honda.com\/automoveis",
+                            "alias": null,
+                            "external": true,
+                            "absolute": "http:\/\/www.honda.com\/automoveis",
+                            "relative": "http:\/\/www.honda.com\/automoveis",
+                            "existing": true,
+                            "weight": "-50",
+                            "expanded": false,
+                            "enabled": true,
+                            "uuid": null,
+                            "options": {
+                                "menu_icon": {
+                                    "fid": false
+                                },
+                                "external": true
+                            }
+                        },
+                        {
+                            "key": "5c27b6b1-fee3-4f1f-a7b5-3fdaa43e938b",
+                            "title": "Honda Motos",
+                            "description": null,
+                            "uri": "http:\/\/www.honda.com\/motos",
+                            "alias": null,
+                            "external": true,
+                            "absolute": "http:\/\/www.honda.com\/motos",
+                            "relative": "http:\/\/www.honda.com\/motos",
+                            "existing": true,
+                            "weight": "-49",
+                            "expanded": false,
+                            "enabled": true,
+                            "uuid": null,
+                            "options": {
+                                "menu_icon": {
+                                    "fid": false
+                                },
+                                "external": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "f511f77a-634b-4606-b50e-15dff91f3d87",
+                    "title": "Honda Spirit",
+                    "description": null,
+                    "uri": "http:\/\/www.honda.com",
+                    "alias": null,
+                    "external": true,
+                    "absolute": "http:\/\/www.honda.com",
+                    "relative": "http:\/\/www.honda.com",
+                    "existing": true,
+                    "weight": "-49",
+                    "expanded": false,
+                    "enabled": true,
+                    "uuid": null,
+                    "options": {
+                        "menu_icon": {
+                            "fid": false
+                        },
+                        "external": true
+                    }
+                }
+            ]
+        }
+    ],
+    "banner": [
+        {
+            "title": "Autem",
+            "field_tags": "stalidredrojiprobejupheshemasebuchathoprodre",
+            "urlContent": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/node\/3",
+            "field_imagem_desktop": "\/drupal\/web\/sites\/default\/files\/2021-06\/generateImage_cAGwdx.gif"
+        },
+        {
+            "title": "Hendrerit Voco",
+            "field_tags": "",
+            "urlContent": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/node\/4",
+            "field_imagem_desktop": "\/drupal\/web\/sites\/default\/files\/2021-06\/generateImage_tlIuYc.jpeg"
+        },
+        {
+            "title": "Abigo Cui Lucidus Ymo",
+            "field_tags": "raua",
+            "urlContent": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/node\/5",
+            "field_imagem_desktop": "\/drupal\/web\/sites\/default\/files\/2021-06\/generateImage_tRmrPS.jpeg"
+        },
+        {
+            "title": "Tation",
+            "field_tags": "stalidredrojiprobejupheshemasebuchathoprodre",
+            "urlContent": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/node\/1",
+            "field_imagem_desktop": "\/drupal\/web\/sites\/default\/files\/2021-06\/generateImage_z8rwzc.png"
+        },
+        {
+            "title": "Lucidus",
+            "field_tags": "raua",
+            "urlContent": "https:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/node\/2",
+            "field_imagem_desktop": "\/drupal\/web\/sites\/default\/files\/2021-06\/generateImage_Dct6IR.png"
+        }
+    ],
+    "steps": [
+        {
+            "title": "Aproveite a facilidade e monte sua pasta de arquivos para download com fotos, v\u00eddeos e muito mais.",
+            "subtitle": "\u00c9 muito f\u00e1cil! Confira o passo a passo",
+            "text_1": "\u003Cp\u003E\u003Cspan\u003E\u003Cspan\u003ENavegue pelo site e adicione os arquivos que deseja fazer download para sua pasta.\u003C\/span\u003E\u003C\/span\u003E\u003C\/p\u003E",
+            "text_2": "\u003Cp\u003EAp\u00f3s concluir suas sele\u00e7\u00f5es, acesse a pasta na barra superior do site e solicite o \u003Cstrong\u003Edownload\u003C\/strong\u003E.\u003C\/p\u003E\n\n\u003Cp\u003E\u00a0\u003C\/p\u003E",
+            "text_3": "\u003Cp\u003EVoc\u00ea receber\u00e1 um acesso via link contendo todos os arquivos que voc\u00ea solicitou para download.\u003C\/p\u003E"
+        }
+    ],
+    "releases": [
+        {
+            "id": "1",
+            "created_at": "2021-06-07T10:15:32-0300",
+            "segment_title": "Motocicletas",
+            "segment_id": "11",
+            "title": "Release teste CFG",
+            "body": "\u003Cp\u003ETexto corpo\u003C\/p\u003E",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/33.jpg",
+            "type": "Releases",
+            "content_url": "\/node\/1"
+        },
+        {
+            "id": "20",
+            "created_at": "2021-06-07T07:01:00-0300",
+            "segment_title": "Autom\u00f3veis",
+            "segment_id": "12",
+            "title": "Blandit Utrum",
+            "body": "\u003Cp\u003EAcsi meus nutus praemitto premo sit vulpes. At commoveo conventio ludus nulla populus roto tincidunt. Accumsan et nimis. Conventio os refero validus vulputate.\u003C\/p\u003E",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_uUs1wO.gif",
+            "type": "Releases",
+            "content_url": "\/node\/20"
+        },
+        {
+            "id": "19",
+            "created_at": "2021-06-07T03:00:38-0300",
+            "segment_title": "Motocicletas",
+            "segment_id": "11",
+            "title": "Facilisi Neo Praesent Suscipit",
+            "body": "\u003Cp\u003EAbigo augue gilvus iusto loquor pertineo roto turpis verto. Dolus mos praemitto secundum vero. Ea odio torqueo. Haero molior voco. Consectetuer exerci luptatum macto quidne rusticus sagaciter. Eros ille minim ymo.\u003C\/p\u003E",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_WqLNk8.jpg",
+            "type": "Releases",
+            "content_url": "\/node\/19"
+        },
+        {
+            "id": "16",
+            "created_at": "2021-06-06T21:31:33-0300",
+            "segment_title": "Autom\u00f3veis",
+            "segment_id": "12",
+            "title": "Aptent Nibh Paulatim",
+            "body": "\u003Cp\u003EAt augue haero jus populus quidne sit suscipit vicis. Premo proprius ulciscor. Minim probo veniam. Abdo consectetuer exerci genitus gilvus ille iriure suscipere wisi. Adipiscing ludus tincidunt velit. Genitus tamen tego vel. Abluo acsi camur cogo feugiat laoreet neo.",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_Bis69r.png",
+            "type": "Releases",
+            "content_url": "\/node\/16"
+        },
+        {
+            "id": "13",
+            "created_at": "2021-06-06T11:58:27-0300",
+            "segment_title": "Motocicletas",
+            "segment_id": "11",
+            "title": "Exputo Facilisi Utrum Voco",
+            "body": "\u003Cp\u003EDuis facilisi jus ludus saepius. Gilvus ideo imputo sed. Comis roto tego typicus. Abluo nulla persto sed vicis virtus. Aliquip ea hos interdico melior natu occuro rusticus tego vulpes. Abluo bene euismod iustum loquor nisl sagaciter tamen valde ymo. Amet immitto nobis nutus sed torqueo ut.",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_h5EGgq.gif",
+            "type": "Releases",
+            "content_url": "\/node\/13"
+        },
+        {
+            "id": "15",
+            "created_at": "2021-06-06T07:26:40-0300",
+            "segment_title": "Corporativo",
+            "segment_id": "10",
+            "title": "Odio",
+            "body": "\u003Cp\u003EAccumsan inhibeo pala sino. Ad caecus dolor euismod ille nobis saluto vel. Eu gemino haero in olim quis refoveo rusticus saluto vero.\u003C\/p\u003E",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_UAUvIi.jpg",
+            "type": "Releases",
+            "content_url": "\/node\/15"
+        },
+        {
+            "id": "11",
+            "created_at": "2021-06-06T04:10:25-0300",
+            "segment_title": "Autom\u00f3veis",
+            "segment_id": "12",
+            "title": "Incassum",
+            "body": "\u003Cp\u003EAbdo duis iaceo lucidus macto nostrud pecus saepius secundum utinam. Antehabeo duis eu iriure laoreet lucidus premo usitas vereor. Bene blandit damnum hos immitto natu paulatim similis valetudo. Erat gemino immitto luctus sed ullamcorper.\u003C\/p\u003E",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_dJlwWo.gif",
+            "type": "Releases",
+            "content_url": "\/node\/11"
+        },
+        {
+            "id": "4",
+            "created_at": "2021-06-05T14:19:38-0300",
+            "segment_title": "Produtos de for\u00e7a",
+            "segment_id": "13",
+            "title": "Brevitas Haero Secundum Tincidunt",
+            "body": "\u003Cp\u003EAliquam autem facilisi lucidus nulla plaga. Consequat dolor saepius scisco. Abbas diam immitto meus paulatim. Dignissim genitus inhibeo magna metuo modo natu nobis ulciscor. Accumsan aliquip praemitto sagaciter tincidunt wisi.\u003C\/p\u003E",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_Bis69r.png",
+            "type": "Releases",
+            "content_url": "\/node\/4"
+        },
+        {
+            "id": "2",
+            "created_at": "2021-06-05T01:24:20-0300",
+            "segment_title": "Motocicletas",
+            "segment_id": "11",
+            "title": "Aptent",
+            "body": "\u003Cp\u003EEsca ibidem ille jugis loquor vicis. Eros facilisi feugiat ludus macto nunc roto saepius secundum uxor. Augue nunc populus refoveo tamen valetudo. Appellatio commoveo modo mos populus. Aptent eu wisi. Abdo blandit jumentum loquor vulpes.",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_9tr9H3.png",
+            "type": "Releases",
+            "content_url": "\/node\/2"
+        },
+        {
+            "id": "9",
+            "created_at": "2021-06-04T20:17:59-0300",
+            "segment_title": "Motocicletas",
+            "segment_id": "11",
+            "title": "Diam Jumentum Occuro Odio",
+            "body": "\u003Cp\u003EAptent cogo laoreet melior minim nulla secundum. Defui ea exputo ille lucidus nimis nutus proprius quidem. Abico aliquip comis feugiat hendrerit roto sagaciter suscipere venio virtus. Causa exputo feugiat gilvus qui sed vindico. Antehabeo immitto interdico lucidus odio.",
+            "field_release_image": "\/sites\/default\/files\/2021-06\/generateImage_5iS40L.jpeg",
+            "type": "Releases",
+            "content_url": "\/node\/9"
+        }
+    ],
+    "rows": [
+        {
+            "type": "galeria_de_videos",
+            "title": "CG 160 v\u00eddeo",
+            "image_thumbnail": "\/sites\/default\/files\/styles\/medium\/public\/2021-06\/33_1.jpg?itok=AbKCHJFf",
+            "image_preview": "\/sites\/default\/files\/2021-06\/33_1.jpg",
+            "image_small_id": "",
+            "image_medium_id": "",
+            "image_large_id": "",
+            "video_preview": "\/sites\/default\/files\/2021-06\/O%20que%20acontece%20agora%20Piva_1.mp4",
+            "video_small_id": "35",
+            "video_medium_id": "36",
+            "video_large_id": ""
+        },
+        {
+            "type": "galeria_de_imagens",
+            "title": "CG 160",
+            "image_thumbnail": "\/sites\/default\/files\/styles\/medium\/public\/2021-06\/33_0.jpg?itok=iSNoo0m4",
+            "image_preview": "\/sites\/default\/files\/2021-06\/33_0.jpg",
+            "image_small_id": "29",
+            "image_medium_id": "30",
+            "image_large_id": "38",
+            "video_preview": "",
+            "video_small_id": "",
+            "video_medium_id": "",
+            "video_large_id": ""
+        },
+        {
+            "type": "galeria_de_imagens",
+            "title": "CG 160",
+            "image_thumbnail": "\/sites\/default\/files\/styles\/medium\/public\/2021-06\/pexels-daria-shevtsova-892618.jpg?itok=4qrqPN8v",
+            "image_preview": "\/sites\/default\/files\/2021-06\/pexels-daria-shevtsova-892618.jpg",
+            "image_small_id": "32",
+            "image_medium_id": "33",
+            "image_large_id": "39",
+            "video_preview": "",
+            "video_small_id": "",
+            "video_medium_id": "",
+            "video_large_id": ""
+        }
+    ],
+    "footer-menu": [
+        [
+            {
+                "key": "taxonomy_menu.menu_link.motocicletas.15",
+                "title": "Adventure",
+                "description": null,
+                "uri": "taxonomy\/term\/15",
+                "alias": "taxonomy\/term\/15",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/15",
+                "relative": "\/drupal\/web\/taxonomy\/term\/15",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "c7e38da0-fe53-4584-bfd8-be800c283ec0",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.automoveis.21",
+                "title": "Fit",
+                "description": null,
+                "uri": "taxonomy\/term\/21",
+                "alias": "taxonomy\/term\/21",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/21",
+                "relative": "\/drupal\/web\/taxonomy\/term\/21",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "5797d435-09f8-4b92-868a-7e28076dc3e0",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.produtos_de_forca.22",
+                "title": "Motobomba",
+                "description": null,
+                "uri": "taxonomy\/term\/22",
+                "alias": "taxonomy\/term\/22",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/22",
+                "relative": "\/drupal\/web\/taxonomy\/term\/22",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "f019825f-aaba-4706-9099-85bcc4ba51f6",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.produtos_de_forca.23",
+                "title": "Motores",
+                "description": null,
+                "uri": "taxonomy\/term\/23",
+                "alias": "taxonomy\/term\/23",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/23",
+                "relative": "\/drupal\/web\/taxonomy\/term\/23",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "c8af5112-8598-4c16-893e-4405c09c1501",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.motocicletas.16",
+                "title": "Off Road",
+                "description": null,
+                "uri": "taxonomy\/term\/16",
+                "alias": "taxonomy\/term\/16",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/16",
+                "relative": "\/drupal\/web\/taxonomy\/term\/16",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "2e56d841-3275-4253-905c-ca1887a24186",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.produtos_de_forca.24",
+                "title": "Ro\u00e7adeiras",
+                "description": null,
+                "uri": "taxonomy\/term\/24",
+                "alias": "taxonomy\/term\/24",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/24",
+                "relative": "\/drupal\/web\/taxonomy\/term\/24",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "ceea1658-495f-4fb9-940a-daa1707c929c",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.motocicletas.17",
+                "title": "Sport",
+                "description": null,
+                "uri": "taxonomy\/term\/17",
+                "alias": "taxonomy\/term\/17",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/17",
+                "relative": "\/drupal\/web\/taxonomy\/term\/17",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "6a9fb2e0-0f84-4e5f-8b0f-46c159af205f",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.motocicletas.18",
+                "title": "Street",
+                "description": null,
+                "uri": "taxonomy\/term\/18",
+                "alias": "taxonomy\/term\/18",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/18",
+                "relative": "\/drupal\/web\/taxonomy\/term\/18",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "d1fb4ed6-53c3-41b2-87d1-b35fcc627f75",
+                "options": []
+            },
+            {
+                "key": "taxonomy_menu.menu_link.motocicletas.19",
+                "title": "Touring",
+                "description": null,
+                "uri": "taxonomy\/term\/19",
+                "alias": "taxonomy\/term\/19",
+                "external": false,
+                "absolute": "http:\/\/saladeimprensa.homologaprojeto.com.br\/drupal\/web\/taxonomy\/term\/19",
+                "relative": "\/drupal\/web\/taxonomy\/term\/19",
+                "existing": true,
+                "weight": "0",
+                "expanded": false,
+                "enabled": true,
+                "uuid": "1a93e1fd-2a46-46fe-8f0e-15940ee8020a",
+                "options": []
+            }
+        ]
+    ]
+}

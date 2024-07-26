@@ -1,0 +1,70 @@
+
+.more-contents {
+    width: 100%;
+    // padding: 45px 0 90px 0;
+    // background: linear-gradient(#FFFFFF, #F2F2F2);
+
+    .section-title {
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 53px;
+        color: #3d3d3e;
+        text-align: center;
+        margin-bottom: 62px;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .itens {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            .link {
+                position: absolute;
+                z-index: 1300;
+                top: 0;
+                bottom: 0;
+                height: 100%;
+                width: 100%;
+            }
+            .corp {
+                position: absolute;
+                z-index: 2400;
+                top: 0;
+                bottom: 0;
+                height: 100%;
+                width: 100%;
+            }
+            .icon {
+                text-align: center;
+            }
+
+            .title {
+                margin-top: 20px;
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 19px;
+                color: #3d3d3e;
+            }
+        }
+        // Responsive Adjust -
+        // Thiago Andriotti
+        flex-wrap: wrap;
+        .itens {
+            width: 10.25rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 992px) {
+
+        }
+    }
+}
+
+

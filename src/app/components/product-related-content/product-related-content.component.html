@@ -1,0 +1,25 @@
+
+<div class="container">
+    <div class="more-contents d-flex flex-wrap">
+        <div class="col py-5">
+            <h2 [hidden]="related.length===0" class="section-title">Veja também conteúdos sobre</h2>
+            <div class="content">
+                <div class="itens" *ngFor="let item of related"  >
+                    <a  class="link" routerLink="{{item.extra_link}}" *ngIf="item.url_title != 'Corporativo'&& item.url_title != 'CORPORATIVO'"></a>
+                    <button class="corp" data-toggle="modal" data-target="#corpMenu" *ngIf="item.url_title == 'Corporativo' || item.url_title == 'CORPORATIVO'" ></button>
+                    <div class="icon" *ngIf="isSvg(item.thumbs_url); else imagePNG" [innerHTML]="item.thumbs | safeHtml"></div>
+
+                    <ng-template #imagePNG>
+                        <div class="icon" >
+                            <img src="{{url}}{{item.thumbs_url}}"  alt="{{item.url_title}}">
+                        </div>
+                    </ng-template>
+                    <div class="title">
+                        {{item.url_title}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<modal-corp-menu></modal-corp-menu>

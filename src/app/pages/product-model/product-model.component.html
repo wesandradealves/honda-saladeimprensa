@@ -1,0 +1,10 @@
+<ng-container *ngIf="id">
+    <app-product-banner [parentName]="id" [product]="1"></app-product-banner>
+    <app-breadcrumb [routeParent]="'motocicletas/'" [nameParent]="'Motocicletas'" [nameChildren]="name" [type]="'container'"></app-breadcrumb>
+    <app-product-release [id]="id" [name]="name" [nameParent]="12"></app-product-release>
+    <app-product-model-gallery [id]="id" [type]="'image'" [name]="name"></app-product-model-gallery>
+    <app-product-model-gallery [id]="id" [type]="'video'" [name]="name"></app-product-model-gallery>
+    <div class="gradient-bg">
+        <app-product-related-product [parentName]="'motocicletas'" [id]="id"></app-product-related-product>
+    </div>
+</ng-container>

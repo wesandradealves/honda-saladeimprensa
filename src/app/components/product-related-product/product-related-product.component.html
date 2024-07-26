@@ -1,0 +1,19 @@
+<div class="container" *ngIf="related">
+    <div class="more-contents more-contents-product d-flex flex-wrap">
+        <div class="col py-5">
+            <h2 class="section-title">{{ titleBlock }}</h2>
+            <div class="content">
+                <div class="itens" *ngFor="let item of related">
+                    <a [routerLink]="item.url_alias">
+                        <div class="icon">
+                            <img src="{{url}}{{item.thumbs}}" alt="">
+                        </div>
+                        <div class="title">
+                            {{item.name}}
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

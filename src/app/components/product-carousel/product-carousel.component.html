@@ -1,0 +1,45 @@
+<div class="product-carousel mt-5">
+    <ul *ngIf="this.parentName != 'automoveis'" class="products-categories col-12 mobile">
+        <div class="mobile-filter">
+            <span class="title">Filtrar modelos:</span>
+            <select name="filter list" id="filterList" (change)="filterProductsMobile($event)">
+                <option *ngFor="let segment of categories"  [ngClass]="{'active': selectedCategory >= segment.anchor && selectedCategory < segment.anchorAfter }" value="{{segment.anchor}}" [selected]="selectedCategory >= segment.anchor && selectedCategory < segment.anchorAfter">
+                    {{segment.name }}
+                </option>
+            </select>
+        </div>
+
+        <!-- <li id="filterList" *ngFor="let category of categories"
+            [ngClass]="{'active': selectedCategory == category.tid}" class="active collapse sm-filter d-lg-none"
+            (click)="filterProducts(category.tid)">
+            {{ category.name }}</li> -->
+
+    </ul>
+    <ul *ngIf="this.parentName != 'automoveis'" class="container products-categories ">
+        <li id="filterList" *ngFor="let category of categories; let x = index"
+            [ngClass]="{'active': selectedCategory >= category.anchor && selectedCategory < category.anchorAfter }" data-target="#slider-product"
+            class="active collapse show sm-filter d-none d-lg-flex" (click)="slideGoTo(category.anchor)">
+            {{ category.name }}</li>
+    </ul>
+    <ngx-slick-carousel class="carousel slider-product" id="slider-product" #slickModal="slick-carousel" [config]="slideProductConfig" *ngIf="products.length > 0"
+        (afterChange)="afterChange($event)">
+        <div ngxSlickItem class="slide-item" *ngFor="let product of products" >
+            <h3 class="slide-title">{{ product.name }}</h3>
+            <img  class="d-block" src="{{url}}{{ product.imagem }}"
+                    alt="{{ product.name }} ">
+            <div class="slide-footer mt-4">
+                <button [routerLink]="product.url_alias" title="Ver detalhes" class="see-more" routerLinkActive="router-link-active">Ver detalhes</button>
+            </div>
+        </div>
+    </ngx-slick-carousel>
+    <!-- <div *ngIf="products.length == 0">
+        Nenhum produto cadastrado
+    </div> -->
+    <div class="container box-see-more d-flex flex-wrap">
+        <div class="col-12 text-right mt-5">
+            <button [routerLink]="['/honda-global/', globalId]" title="Confira notícias sobre outros modelos"
+                class="see-more">Confira notícias sobre outros modelos <i class="arrow"></i></button>
+            <hr />
+        </div>
+    </div>
+</div>

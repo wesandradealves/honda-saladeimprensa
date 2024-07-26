@@ -1,0 +1,163 @@
+<div *ngIf="id">
+    <app-product-banner [event]="id"></app-product-banner>
+    <app-breadcrumb
+        [routeParent]="'/eventos'"
+        [nameChildren]="'Evento'"
+        [type]="'column'"
+    ></app-breadcrumb>
+    <div class="events container" id="release-print" *ngIf="events?.length > 0">
+        <div class="row">
+            <div *ngIf="events" class="main col-12 col-lg-8">
+                <div class="block-text" *ngFor="let event of events">
+                    <div class="header">
+                        <div class="subtitle">
+                            {{ event.title }}
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="text" [innerHTML]="event.body"></div>
+                </div>
+                <div class="action-menu">
+                    <div class="links">
+                        <div
+                            class="item"
+                            (click)="
+                                addToCart(generalInfo.file_id, events[0].title)
+                            "
+                        >
+                            <img
+                                [src]="
+                                    fileService.hasFileCart(generalInfo.file_id)
+                                        ? '../../../assets/img/added-cart.svg'
+                                        : '../../../assets/img/add-cart.svg'
+                                "
+                                class="img-fluid"
+                            />
+                            <div class="btn-text">Adicionar release</div>
+                        </div>
+
+                        <download-button
+                            *ngIf="generalInfo.file_id"
+                            [label]="'Download'"
+                            [id]="generalInfo.file_id"
+                            [origin]="'files'"
+                        ></download-button>
+
+                        <button
+                            class="item print"
+                            printSectionId="release-print"
+                            [printStyle]="{
+                                img: {
+                                    width: '100%',
+                                    margin: 'auto'
+                                },
+                                h3: {
+                                    'font-weight': 'bold',
+                                    'font-size': '40px',
+                                    'line-height': '48px',
+                                    color: '#3D3D3E',
+                                    'margin-bottom': '30px'
+                                }
+                            }"
+                            ngxPrint
+                        >
+                            <div class="icon icon-print">
+                                <i class="fas fa-print"></i>
+                            </div>
+                            <div class="btn-text">Imprimir release</div>
+                        </button>
+                    </div>
+
+                    <button class="share" (click)="openShare()">
+                        <div class="title">
+                            Compartilhar
+
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div *ngIf="seeButtonsShare" class="buttons">
+                            <share-button button="facebook"></share-button>
+                            <share-button button="twitter"></share-button>
+                            <share-button button="whatsapp"></share-button>
+                            <share-button button="linkedin"></share-button>
+                            <share-button button="pinterest"></share-button>
+                            <share-button
+                                button="email"
+                                description="Confira este conteúdo da Sala de Imprensa Honda."
+                            >
+                                >
+                            </share-button>
+                        </div>
+                    </button>
+                </div>
+                <div class="tags">
+                    <div class="indicator">Tags:</div>
+                    <div [routerLink]="['/busca/', 'Tag']" class="tag">
+                        {{ "Tag" }}
+                    </div>
+                </div>
+            </div>
+            <div class="border-middle col-lg-1"></div>
+            <div class="aside col-12 col-lg-3">
+                <section class="informations" *ngIf="generalInfo">
+                    <div class="header">
+                        <div class="title">
+                            Informa&ccedil;&otilde;es <span> Gerais </span>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="subtitle">Local:</div>
+                    <div class="text">
+                        <p [innerHTML]="generalInfo.field_local"></p>
+                    </div>
+                    <div class="subtitle">Data e hor&aacute;rio:</div>
+                    <div class="text">
+                        <p [innerHTML]="generalInfo.field_data_hora"></p>
+                    </div>
+                    <div class="subtitle">Informa&ccedil;&otilde;es:</div>
+                    <div class="text">
+                        <p [innerHTML]="generalInfo.field_info_gerais"></p>
+                    </div>
+                </section>
+
+                <section class="releases" *ngIf="releases?.length > 0">
+                    <div class="header">
+                        <div class="title">
+                            Confira os
+                            <span> lançamentos </span>
+                        </div>
+                        <hr />
+                    </div>
+
+                    <div
+                        class="block-release"
+                        *ngFor="let release of releases"
+                        [routerLink]="release.content_url"
+                        routerLinkActive="router-link-active"
+                    >
+                        <div class="block-img">
+                            <img
+                                *ngIf="release.field_release_gallery_image"
+                                src="{{ url }}{{
+                                    release.field_release_gallery_image
+                                }}"
+                            />
+                            <img
+                                *ngIf="!release.field_release_gallery_image"
+                                src="../../../assets/img/honda_logo_thumb.png"
+                                class="img-fluid"
+                            />
+                        </div>
+
+                        <div class="block-title">
+                            <div class="title-release">
+                                {{ release.title }}
+                            </div>
+
+                            <div class="see-more">Veja Mais</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

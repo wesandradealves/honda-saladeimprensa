@@ -1,0 +1,253 @@
+@import "../../../assets/scss/variables";
+
+.header-gallery {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #D3D3D3;
+    position: relative;
+
+    .title {
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 37px;
+        color: #3D3D3E;
+
+        span {
+            color: #CD2B14;
+        }
+    }
+
+    .btn-actions {
+        display: flex;
+        align-items: center;
+
+        @media(max-width: $lg) {
+            display: none;
+        }
+    }
+
+    .add {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        cursor: pointer;
+
+        &.add-gallery{
+            margin-left: 20px;
+            border-left: 1px solid #D3D3D3;
+        }
+
+        .btn-add {
+            font-size: 12px;
+            line-height: 16px;
+            color: #CD2B14;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #CD2B14;
+            margin-left: 10px;
+        }
+    }
+
+    .counter {
+        display: none;
+        font-size: 22px;
+        line-height: 29px;
+
+        span {
+            color: #cd2b14;
+            font-weight: bold;
+        }
+    }
+
+    hr{
+        border-color: #CD2B14;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 45px;
+        margin: 0px;
+
+    }
+}
+.carousel {
+    .slide-moto {
+        margin: 10px;
+        .video {
+            width: 100%;
+            height: 211px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+    
+            .thumb {
+                position: absolute;
+                margin: auto;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+            }
+    
+            .icon-play {
+                position: absolute;
+                margin: auto;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 48px;
+                height: 48px;
+            }
+        }
+    
+        .name-gallery {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 21px;
+            margin-top: 7px;
+            color: #3D3D3E;
+            min-height: 3rem;
+        }
+    
+        .buttons {
+            margin-top: 8px;
+            width: fit-content;
+        }
+    
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 5px;
+    
+            .buttons {
+                border-right: 1px solid #d3d3d3;
+                margin-right: 20px;
+                padding-right: 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+    
+                .btn-add {
+                    font-size: 12px;
+                    line-height: 16px;
+                    color: #CD2B14;
+                    padding-bottom: 3px;
+                    border-bottom: 1px solid #CD2B14;
+                    width: fit-content;
+                    margin-left: 15px;
+                    cursor: pointer;
+                }
+    
+                &:last-child {
+                    border-right: 0px;
+                    margin-right: 0px;
+                    padding-right: 0px;
+                }
+    
+                img {
+                    width: 33px;
+                }
+            }
+        }
+    }
+
+    &.carousel-mobile {
+        display: none;
+
+        @media(max-width: $lg) {
+            display: inherit;
+        }
+        margin-left: 55px;
+        margin-right: 55px;
+
+        ::ng-deep.carousel-control-next {
+            right: 0;
+            margin-right: -45px;
+
+            img {
+                width: 40px;
+            }
+        }
+
+        ::ng-deep.carousel-control-prev {
+            left: 0;
+            margin-left: -45px;
+
+            img {
+                width: 40px;
+            }
+        }
+
+        ::ng-deep.carousel-inner {
+            position: relative;
+            width: 100%;
+            overflow: initial;
+            /* text-align: center; */
+            /* display: flex; */
+            /* align-items: center; */
+            /* justify-content: center; */
+
+            &.carousel-video {
+                height: fit-content;
+            }
+
+            .video {
+                position: relative;
+                height: 155px;
+                width: 100%;
+                cursor: pointer;
+                overflow: hidden;
+
+                .thumb {
+                    position: absolute;
+                    margin: auto;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 100%;
+                }
+
+                .icon-play {
+                    position: absolute;
+                    margin: auto;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+        }
+    }
+
+    &.carousel-desktop {
+        @media(max-width: $lg) {
+            display: none;
+        }
+    }
+}
+
+::ng-deep.slick-prev:before, ::ng-deep.slick-next:before {
+    color: #000;
+    opacity: 1;
+    font-size: 40px;
+}
+
+::ng-deep.slick-prev, ::ng-deep.slick-next {
+    height: 40px;
+    width: 40px;
+}
+
+::ng-deep.slick-prev {
+    left: -55px;
+}
+
+::ng-deep.slick-next {
+    right: -55px;
+}

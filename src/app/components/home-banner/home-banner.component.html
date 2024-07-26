@@ -1,0 +1,93 @@
+<section class="banner">
+    <div
+        id="bannerHome"
+        class="w-100 carousel slide carousel-fade"
+        data-ride="carousel"
+        data-interval="6900"
+    >
+        <ol class="carousel-indicators" [hidden]="banners?.length <= 1">
+            <li
+                data-target="#bannerHome"
+                *ngFor="let banner of banners; let idx = index"
+                [attr.data-slide-to]="idx"
+                class="{{ idx == 0 ? 'active' : '' }}"
+            >
+                <!-- <img src="assets/img/indicator.svg" class="img-fluid d-block" alt=""> -->
+            </li>
+        </ol>
+        <div class="carousel-inner">
+            <div
+                class="carousel-item {{ idx == 0 ? 'active' : '' }}"
+                *ngFor="let banner of banners; let idx = index"
+            >
+                <div class="overlay"></div>
+                <img
+                    class="d-block w-100"
+                    src="{{ url }}{{ banner.field_imagem_desktop }}"
+                    alt="{{ banner.title }} "
+                />
+                <div class="banner-content">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div class="content col">
+                                <div
+                                    *ngIf="
+                                        banner.field_tags &&
+                                        banner.field_tags.length > 0
+                                    "
+                                >
+                                    <div
+                                        class="tag"
+                                        *ngFor="let tag of banner.field_tags"
+                                    >
+                                        <span> {{ tag | uppercase }} </span>
+                                    </div>
+                                </div>
+                                <div class="title">{{ banner.title }}</div>
+                            </div>
+                        </div>
+                        <a
+                            class="banner-link"
+                            *ngIf="banner.field_link"
+                            routerLink="{{ banner.field_link }}"
+                            appGtmEvent
+                            gtm-category="home"
+                            gtm-action="banner"
+                            gtm-label="baner-clique:{{ banner.title }}"
+                        ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a
+            class="carousel-control-prev"
+            href="#bannerHome"
+            role="button"
+            data-slide="prev"
+            appGtmEvent
+            gtm-category="home"
+            gtm-action="banner"
+            gtm-label="voltar"
+        >
+            <img
+                src="assets/img/banner_arrow_left.png"
+                alt="seta para voltar"
+            />
+        </a>
+        <a
+            class="carousel-control-next"
+            href="#bannerHome"
+            role="button"
+            data-slide="next"
+            appGtmEvent
+            gtm-category="home"
+            gtm-action="banner"
+            gtm-label="proximo"
+        >
+            <img
+                src="assets/img/banner_arrow_right.png"
+                alt="seta para avançar"
+            />
+        </a>
+    </div>
+</section>

@@ -1,0 +1,124 @@
+<section class="gallery">
+    <div class="container">
+        <div class="row">
+            <a
+                class="link-release"
+                *ngFor="let item of banners"
+                href="{{ item.field_link }}"
+            >
+                <div class="to-release">
+                    <img src="{{ url }}{{ item.field_imagem_desktop }}" />
+                    <div class="btn-box">
+                        <span> {{ item.title }} </span>
+                    </div>
+                </div>
+            </a>
+            <div class="col-12 col-lg-3 pb-5">
+                <div class="call text-center text-lg-left">
+                    Veja as &uacute;ltimas <span>Fotos</span> e
+                    <span> V&iacute;deos </span> adicionadas na Sala de Imprensa
+                    Honda.
+                </div>
+            </div>
+            <div class="gallery-wrapper" *ngFor="let item of gallery">
+                <div
+                    class="segment-block"
+                    *ngFor="let photos of item; let x = index"
+                >
+                    <div class="title title0">{{ getNameSegment(x) }}</div>
+                    <div class="gallery-col text-center">
+                        <div
+                            class=""
+                            *ngFor="let photo of photos; let i = index"
+                        >
+                            <!-- <div class="title title{{i}}">
+                                {{photo.segment}}
+                            </div> -->
+                            <div
+                                class="gallery-content d-flex flex-row flex-lg-column h-100"
+                                id="gallery"
+                                data-toggle="modal"
+                                [attr.data-target]="photo.image_id ? '#imageModal' + photo.image_id : '#imageModal' + photo.gallery_id"
+
+                                (click)="loadModalGallery(photo.gallery_id)"
+                                appGtmEvent
+                                gtm-category="home"
+                                gtm-action="institucional"
+                                gtm-label="{{
+                                    photo.type?.indexOf('video') >= 0
+                                        ? 'video'
+                                        : 'foto'
+                                }}-clique"
+                            >
+                                <div class="box pt-4 pb-3">
+                                    <div class="link">
+                                        <a
+                                            [attr.data-target]="
+                                                '#imageSlider' +
+                                                photo.gallery_id
+                                            "
+                                            data-slide-to="0"
+                                        >
+                                            <img
+                                                class="bg-item img-fluid"
+                                                [lazyLoad]="
+                                                    url + photo.image_thumbnail
+                                                "
+                                                alt=""
+                                            />
+                                            <img
+                                                *ngIf="
+                                                    photo.type ==
+                                                        'releases_video' ||
+                                                    photo.type ==
+                                                        'galeria_de_videos'
+                                                "
+                                                class="icon-play"
+                                                src="../../../assets/img/icon_play.png"
+                                            />
+                                        </a>
+                                    </div>
+                                    <div class="subtitle text-center pt-3">
+                                        {{ photo.title }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngFor="let photos of item; let x = index">
+                    <div *ngFor="let photo of photos; let i = index">
+                        <div
+                            *ngIf="
+                                photo.type == 'releases_video' ||
+                                photo.type == 'galeria_de_videos'
+                            "
+                        >
+                            <app-modal-gallery
+                                *ngIf="selectedGallery == photo.gallery_id"
+                                [id]="photo.gallery_id"
+                                [title]="photo.title"
+                                [imageId]="photo.image_id"
+                                [video]="true"
+                            ></app-modal-gallery>
+                        </div>
+                        <div
+                            *ngIf="
+                                photo.type == 'releases_image' ||
+                                photo.type == 'galeria_de_imagens'
+                            "
+                        >
+                            <app-modal-gallery
+                                *ngIf="selectedGallery == photo.gallery_id"
+                                [id]="photo.gallery_id"
+                                [title]="photo.title"
+                                [imageId]="photo.image_id"
+                            ></app-modal-gallery>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Images Gallery Modal-->
+        </div>
+    </div>
+</section>

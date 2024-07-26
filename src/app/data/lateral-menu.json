@@ -1,0 +1,44 @@
+[
+    {
+        "key": "af4987d5-6d69-4418-8e69-abc53add43a6",
+        "title": "Capacetes",
+        "description": null,
+        "uri": "",
+        "alias": "",
+        "external": false,
+        "absolute": "http://localhost:8082/",
+        "relative": "/",
+        "existing": true,
+        "weight": "0",
+        "expanded": false,
+        "enabled": true,
+        "uuid": null,
+        "options": {
+            "menu_icon": {
+                "uri": "public://menu_icons/Ícone_Capacete_Lateral_Vermelho.png",
+                "fid": "2"
+            }
+        }
+    },
+    {
+        "key": "2c19f058-0e0d-4a84-b2fd-e2e8d552cbea",
+        "title": "Inicio",
+        "description": null,
+        "uri": "",
+        "alias": "",
+        "external": false,
+        "absolute": "http://localhost:8082/",
+        "relative": "/",
+        "existing": true,
+        "weight": "0",
+        "expanded": false,
+        "enabled": true,
+        "uuid": null,
+        "options": {
+            "menu_icon": {
+                "uri": "public://menu_icons/Ícone_Home_Vermelho.png",
+                "fid": "1"
+            }
+        }
+    }
+]

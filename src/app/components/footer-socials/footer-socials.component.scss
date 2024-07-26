@@ -1,0 +1,12 @@
+@import "../../../assets/scss/variables";
+
+.social {
+    min-height: 3.75rem;
+    font-size: $font-md;
+    a {
+        font-size: 1.4rem;
+        &:hover {
+            color: black !important
+        }
+    }    
+}

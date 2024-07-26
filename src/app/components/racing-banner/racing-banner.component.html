@@ -1,0 +1,80 @@
+<section class="banner">
+    <div
+        id="bannerRacing"
+        class="w-100 carousel slide carousel-fade"
+        data-ride="carousel"
+        data-interval="6900"
+    >
+        <ol class="carousel-indicators" [hidden]="banners?.length <= 1">
+            <li
+                data-target="#bannerRacing"
+                *ngFor="let banner of banners; let idx = index"
+                [attr.data-slide-to]="idx"
+                class="{{ idx == 0 ? 'active' : '' }}"
+            >
+                <!-- <img src="assets/img/indicator.svg" class="img-fluid d-block" alt=""> -->
+            </li>
+        </ol>
+        <div class="carousel-inner">
+            <div
+                class="carousel-item {{ idx == 0 ? 'active' : '' }}"
+                *ngFor="let banner of banners; let idx = index"
+            >
+                <div class="overlay"></div>
+                <img
+                    class="d-block w-100"
+                    src="{{ url }}{{ banner.field_imagem_desktop }}"
+                    alt="{{ banner.title }} "
+                />
+                <div class="banner-content">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div class="content col">
+                                <a
+                                    class="banner-link"
+                                    *ngIf="banner.field_link"
+                                    href="{{ banner.field_link }}"
+                                    target="_blank"
+                                ></a>
+                                <div *ngIf="banner.field_tags">
+                                    <div
+                                        class="tag"
+                                        *ngFor="let tag of banner.field_tags"
+                                    >
+                                        <span> {{ tag | uppercase }} </span>
+                                    </div>
+                                </div>
+                                <div class="title">{{ banner.title }}</div>
+                                <div class="subtitle">
+                                    {{ banner.subtitle }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a
+            class="carousel-control-prev"
+            href="#bannerRacing"
+            role="button"
+            data-slide="prev"
+        >
+            <img
+                src="assets/img/banner_arrow_left.png"
+                alt="seta para voltar"
+            />
+        </a>
+        <a
+            class="carousel-control-next"
+            href="#bannerRacing"
+            role="button"
+            data-slide="next"
+        >
+            <img
+                src="assets/img/banner_arrow_right.png"
+                alt="seta para avançar"
+            />
+        </a>
+    </div>
+</section>

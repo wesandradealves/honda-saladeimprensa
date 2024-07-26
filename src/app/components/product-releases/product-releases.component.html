@@ -1,0 +1,207 @@
+<div class="container pt-5" *ngIf="releases.length > 0">
+    <div class="releases row">
+        <div class="header-gallery">
+            <h2 class="title">Últimos <span>releases</span></h2>
+            <hr />
+        </div>
+
+        <div class="wrapper">
+            <div class="releases-list d-flex flex-wrap">
+                <!--Mobile-Slider-->
+                <div class="mobile-wrapper">
+                    <ngx-slick-carousel
+                        class="carousel"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig"
+                    >
+                        <div
+                            ngxSlickItem
+                            *ngFor="let release of releases"
+                            class="slide"
+                        >
+                            <div
+                                class="box d-flex flex-column align-items-center justify-content-center"
+                            >
+                                <a
+                                    class="image"
+                                    [routerLink]="release.content_url"
+                                >
+                                    <img
+                                        *ngIf="
+                                            release.field_release_gallery_image
+                                        "
+                                        src="{{ url }}{{
+                                            release.field_release_gallery_image
+                                        }}"
+                                        class="img-fluid"
+                                        loading="lazy"
+                                    />
+                                    <img
+                                        *ngIf="
+                                            !release.field_release_gallery_image
+                                        "
+                                        src="../../../assets/img/honda_logo_thumb.png"
+                                        class="img-fluid"
+                                        loading="lazy"
+                                    />
+                                </a>
+                                <div class="info">
+                                    <a
+                                        class="subtitle"
+                                        [routerLink]="release.content_url"
+                                    >
+                                        <div class="date">
+                                            {{ release.created_at }}
+                                        </div>
+                                        <div class="category">
+                                            {{ release.segment_title }}
+                                        </div>
+                                    </a>
+                                    <a
+                                        class="title"
+                                        [routerLink]="release.content_url"
+                                    >
+                                        {{ release.title }}
+                                    </a>
+                                    <a
+                                        class="text"
+                                        [innerHTML]="release.body"
+                                        [routerLink]="release.content_url"
+                                    >
+                                    </a>
+                                    <div class="actions">
+                                        <download-button
+                                            [releaseId]="release.id"
+                                            [hidden]="!release.file_id"
+                                            [id]="release.file_id"
+                                            [origin]="'files'"
+                                        ></download-button>
+                                        <div
+                                            [hidden]="!release.file_id"
+                                            class="add-cart"
+                                            (click)="
+                                                addToCart(
+                                                    release.file_id,
+                                                    release.title,
+                                                    release.field_release_gallery_image,
+                                                    release.id
+                                                )
+                                            "
+                                        >
+                                            <img
+                                                [src]="
+                                                    fileService.hasFileCart(
+                                                        release.file_id
+                                                    )
+                                                        ? '../../../assets/img/added-cart.svg'
+                                                        : '../../../assets/img/add-cart.svg'
+                                                "
+                                                class="img-fluid"
+                                            />
+                                        </div>
+                                        <a
+                                            class="see-details"
+                                            [routerLink]="release.content_url"
+                                        >
+                                            <span> Veja Mais </span></a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ngx-slick-carousel>
+                </div>
+                <!--Desktop-List-->
+                <div
+                    class="desktop-wrapper col-12 col-lg-6"
+                    *ngFor="let release of releases"
+                >
+                    <div class="box d-flex flex-row">
+                        <a class="image" [routerLink]="release.content_url">
+                            <img
+                                *ngIf="release.field_release_gallery_image"
+                                [lazyLoad]="
+                                    url + release.field_release_gallery_image
+                                "
+                                class="img-fluid"
+                            />
+                            <img
+                                *ngIf="!release.field_release_gallery_image"
+                                src="../../../assets/img/honda_logo_thumb.png"
+                                class="img-fluid"
+                            />
+                        </a>
+                        <div class="info">
+                            <a
+                                class="subtitle"
+                                [routerLink]="release.content_url"
+                            >
+                                <div class="date">{{ release.created_at }}</div>
+                                <div class="category">
+                                    {{ release.segment_title }}
+                                </div>
+                            </a>
+                            <a class="title" [routerLink]="release.content_url">
+                                {{ release.title }}
+                            </a>
+                            <a
+                                class="text"
+                                [innerHTML]="release.body"
+                                [routerLink]="release.content_url"
+                            >
+                            </a>
+                            <div class="actions">
+                                <download-button
+                                    [releaseId]="release.id"
+                                    [hidden]="!release.file_id"
+                                    [id]="release.file_id"
+                                    [origin]="'files'"
+                                ></download-button>
+                                <div
+                                    [hidden]="!release.file_id"
+                                    class="add-cart"
+                                    (click)="
+                                        addToCart(
+                                            release.file_id,
+                                            release.title,
+                                            release.field_release_gallery_image,
+                                            release.id
+                                        )
+                                    "
+                                >
+                                    <img
+                                        [src]="
+                                            fileService.hasFileCart(
+                                                release.file_id
+                                            )
+                                                ? '../../../assets/img/added-cart.svg'
+                                                : '../../../assets/img/add-cart.svg'
+                                        "
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <a
+                                    class="see-details"
+                                    [routerLink]="release.content_url"
+                                >
+                                    <span> Veja Mais </span></a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="totalItems > 10"  
+                    class="col-12 text-center mt-5">
+                    <button
+                        (click)="navigateTo()"
+                        title="Veja todos os releases"
+                        class="see-more"
+                    >
+                        Veja todos os releases
+                    </button>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

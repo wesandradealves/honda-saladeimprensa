@@ -1,0 +1,98 @@
+@import "./../../components/home-banner/home-banner.component";
+
+.banner {
+    .carousel-indicators {
+        z-index: 2;
+    }
+    .banner-content {
+        ::ng-deep.overlay{
+            background-color: rgba(0, 0, 0, 0.25) !important;
+        }
+        .content {
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+
+            .title {
+                font-size: calc(2.125rem - 5px);
+                text-shadow: 0px 0px 10px #0000009A;
+                
+                @media (min-width: $lg) {
+                    font-size: 3rem;
+                }
+            }
+
+            .subtitle {
+                font-size: 1.6rem;
+                line-height: 36px;
+                text-align: left;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                text-align: center;
+                text-shadow: 0px 0px 10px #0000009A;
+
+                @media (max-width: $md) {
+                    font-size: 20px;
+                }
+            }
+
+            &.corporative {
+                text-align: left;
+
+                .subtitle {
+                    text-align: left;
+                    margin-top: 10px;
+                }
+
+                .press-kit {
+                    border-radius: 4px;
+                    background: #CD2B14;
+                    width: fit-content;
+                    margin-top: 20px;
+                    padding: 10px 28px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    .icon {
+                        margin-right: 8px;
+
+                        img {
+                            width: 25px;
+                            height: 18px;
+                        }
+                    }
+
+                    .title {
+                        font-size: 16px;
+                        line-height: 21px;
+                        color: #fff;
+                        font-family: $font-stack-primary !important;
+                    }
+                }
+            }
+
+            &.global {
+                .subtitle {
+                    text-align: center;
+                    border-radius: 4px;
+                    background: #CD2B14;
+                    width: fit-content;
+                    margin: 10px auto 0px auto;
+                    padding: 10px 28px;
+                    text-transform: none;
+                }
+
+                text-align: center;
+            }
+
+            &.event {
+                .subtitle {
+                    text-align: left;
+                }
+
+                text-align: left;
+            }
+        }
+    }
+}

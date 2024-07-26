@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="carrousel-arrow" transform="translate(40 40) rotate(180)">
+    <circle id="Elipse_5" data-name="Elipse 5" cx="20" cy="20" r="20"/>
+    <path id="Caminho_29" data-name="Caminho 29" d="M23.7,19.729a.567.567,0,0,0,.4.168.547.547,0,0,0,.4-.168l9.409-9.409a.561.561,0,0,0,0-.8L24.5.112a.565.565,0,1,0-.8.8l9.01,9.012-9.01,9.01a.563.563,0,0,0,0,.8Z" transform="translate(-7.053 10.104)" fill="#fff"/>
+  </g>
+</svg>

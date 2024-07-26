@@ -1,0 +1,15 @@
+<svg id="icon-play-video" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="clip-path">
+      <rect y="2" width="48" height="44" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_de_rolagem_1" data-name="Grupo de rolagem 1" clip-path="url(#clip-path)" style="isolation: isolate">
+    <circle id="Elipse_2" data-name="Elipse 2" cx="24" cy="24" r="24" opacity="0.5"/>
+  </g>
+  <path id="Polígono_2" data-name="Polígono 2" d="M9,0l9,10H0Z" transform="translate(31 15) rotate(90)" fill="#fff"/>
+  <g id="Elipse_3" data-name="Elipse 3" fill="none" stroke="#fff" stroke-width="1">
+    <circle cx="24" cy="24" r="24" stroke="none"/>
+    <circle cx="24" cy="24" r="23.5" fill="none"/>
+  </g>
+</svg>

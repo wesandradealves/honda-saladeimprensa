@@ -1,0 +1,31 @@
+<ngx-loading
+    [show]="isLoading"
+    [config]="{
+        backdropBackgroundColour: '#ffffff',
+        primaryColour: '#cd2b14',
+        secondaryColour: '#cd2b14',
+        tertiaryColour: '#cd2b14'
+    }"
+></ngx-loading>
+
+<div *ngIf="!isLoading" class="modal-files-size-content">
+    <i class="arrow"></i>
+    <ul class="sizes-list">
+        <li *ngFor="let size of fileSizes">
+            <img
+                class="img-fluid"
+                src="assets/img/image-abstract.png"
+                alt="Image"
+            />
+            <a class="link-size" (click)="handleClick(size.value)">
+                {{ size.label }}
+            </a>
+            <span class="tam" *ngIf="size.resolution">
+                ({{ size.resolution }})
+            </span>
+            <!-- <span class="tam" *ngIf="!size.resolution && size.label != 'Todos'">
+                ({{ size.size | filesize }})
+            </span> -->
+        </li>
+    </ul>
+</div>

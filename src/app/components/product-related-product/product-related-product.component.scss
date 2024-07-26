@@ -1,0 +1,24 @@
+@import "./../../components/more-contents/more-contents.component";
+
+.more-contents-product {
+    .icon {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #dddddd;
+        margin: 0 auto;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .title {
+        height: 40px;
+        text-transform: none !important;
+    }
+}

@@ -1,0 +1,179 @@
+<button class="btn-menu menu-icon" type="button"  appGtmEvent gtm-category="header" gtm-action="menu" gtm-label="menu-clique" data-bs-toggle="offcanvas" data-bs-target="#offCanvasId" aria-controls="offCanvasId" >
+    <a class="icon-menu" [ngClass]="{'active':isOpen}" (click)="openMenu()">
+        <span class="hamb"></span>
+        <span class="menu-text">{{isOpen ? '' : 'MENU'}}</span>
+    </a>
+</button>
+
+<div class="c-offcanvas-menu" [ngClass]="{'active':isOpen, 'open' : showSubmenus}">
+    <div class="c-offcanvas-container" [ngClass]="{'row' : showSubmenus}">
+        <ul class="lista-c-offcanvas" [ngClass]="{'col-6' : showSubmenus}">
+            <li class="itens-c-offcanvas">
+                <a (click)="redirect('https://www.honda.com.br/', false)" appGtmEvent>
+                    <svg-icon src="assets/img/icon-home.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Início</span>
+                </a>
+            </li>
+            <li class="itens-c-offcanvas">
+                <a (click)="redirect('https://www.honda.com.br/motos', true)" appGtmEvent style="width: 210px">
+                    <img width="42" height="70" class="itens-hover" src="assets/img/icon-moto-active.svg" alt="">
+                    <img width="42" height="70" class="itens" src="assets/img/icon-moto.svg" alt="">
+                    <span class="span-c-offcanvas">Motocicletas</span>
+                </a>
+            </li>
+            <li class="itens-c-offcanvas">
+                <a (click)="redirect('https://www.honda.com.br/automoveis', false)"  appGtmEvent>
+                    <img width="42" height="70" class="itens-hover" src="assets/img/icon-automovel-menu-active.svg" alt="">
+                    <img width="42" height="70" class="itens" src="assets/img/icon-automovel-menu.svg" alt="">
+                    <span class="span-c-offcanvas">Automóveis</span>
+                </a>
+            </li>
+            <li class="itens-c-offcanvas" [ngClass]="{ 'menu-active': subMenus.showSubmenu }">
+                <button appGtmEvent (click)="openSubmenu('showSubmenu')" class="menu-button">
+                    <svg-icon src="assets/img/icon-power.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Motores e Máquinas</span>
+                </button>
+            </li>
+            <li class="itens-c-offcanvas" [ngClass]="{ 'menu-active': subMenus.showSubmenuPos }">
+                <button (click)="openSubmenu('showSubmenuPos')" class="menu-button" appGtmEvent>
+                    <svg-icon src="assets/img/icon-tools.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Pós-Venda</span>
+                </button>
+            </li>
+            <li class="itens-c-offcanvas" [ngClass]="{ 'menu-active': subMenus.showSubmenuFinanceiro }">
+                <button (click)="openSubmenu('showSubmenuFinanceiro')" class="menu-button" appGtmEvent>
+                    <svg-icon src="assets/img/icon-financial-services.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Serviços financeiros</span>
+                </button>
+            </li>
+            <li class="itens-c-offcanvas" [ngClass]="{ 'menu-active': subMenus.showSubmenuInstitucional }">
+                <button (click)="openSubmenu('showSubmenuInstitucional')" class="menu-button" appGtmEvent>
+                    <svg-icon src="assets/img/icon-institutional.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Institucional</span>
+                </button>
+            </li>
+            <li class="itens-c-offcanvas" [ngClass]="{ 'menu-active': subMenus.showSubmenuConcessionarias }">
+                <button (click)="openSubmenu('showSubmenuConcessionarias')" class="menu-button" appGtmEvent>
+                    <svg-icon src="assets/img/icon-dealership.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Concessionárias</span>
+                </button>
+            </li>
+            <li class="itens-c-offcanvas">
+                <a (click)="redirect('https://saladeimprensa.honda.com.br/home', false)" appGtmEvent>
+                    <svg-icon src="assets/img/icon-news.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Sala de imprensa</span>
+                </a>
+            </li>
+            <li class="itens-c-offcanvas">
+                <a (click)="redirect('https://www.honda.com.br/recall', false)" appGtmEvent>
+                    <svg-icon src="assets/img/icon-recall.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">Recall</span>
+                </a>
+            </li>
+            <li class="itens-c-offcanvas">
+                <a (click)="redirect('https://www.honda.com.br/myhonda', false)" appGtmEvent>
+                    <svg-icon src="assets/img/icon-myhonda.svg" alt="" [svgStyle]="{ 'width.px': '42', 'height.px': '70' }"></svg-icon>
+                    <span class="span-c-offcanvas">myHonda-login</span>
+                </a>
+            </li>
+        </ul>
+        <div class="offcanvas-submenu ">
+            <div class="submenu" [ngClass]="{'expanded' : subMenus.showSubmenu}">
+                <li class="itens-submenu">
+                    <a (click)="redirect('https://www.honda.com.br/motores-e-maquinas/', false)" appGtmEvent>
+                        <span>Motores e Máquinas - Brasil</span>
+                    </a>
+                </li>
+                <li class="itens-submenu">
+                    <a (click)="redirect('https://pt.honda-powerproducts.com/', false)" appGtmEvent>
+                        <span>Motores e Máquinas - Global</span>
+                    </a>
+                </li>
+            </div>
+            <div class="submenu" [ngClass]="{'expanded' : subMenus.showSubmenuPos}">
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/pos-venda/automoveis/', false)" appGtmEvent>
+                        <span>Automóveis</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/pos-venda/motos/', false)" appGtmEvent>
+                        <span>Motocicletas</span>
+                    </a>
+                </li>
+            </div>
+            <div class="submenu" [ngClass]="{'expanded' : subMenus.showSubmenuFinanceiro}">
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.hondaservicosfinanceiros.com.br/', false)" appGtmEvent>
+                        <span>Serviços Financeiros</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.consorcionacionalhonda.com.br/', false)" appGtmEvent>
+                        <span>Consórcio</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.bancohonda.com.br/', false)" appGtmEvent>
+                        <span>Financiamentos</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.corretoradeseguroshonda.com.br/', false)" appGtmEvent>
+                        <span>Seguros</span>
+                    </a>
+                </li>
+            </div>
+            <div class="submenu" [ngClass]="{'expanded' : subMenus.showSubmenuInstitucional}">
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/institucional/nossa-historia', false)" appGtmEvent>
+                        <span>Nossa História</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/institucional/honda-no-brasil', false)" appGtmEvent>
+                        <span>Honda no Brasil</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/institucional/sustentabilidade', false)" appGtmEvent>
+                        <span>Sustentabilidade</span>
+                    </a>
+                </li>
+                <li class="itens-submenu">
+                    <a (click)="redirect('https://www.honda.com.br/institucional/compromisso-com-a-seguranca/educacao-no-transito', false)" appGtmEvent>
+                        <span>Compromisso com a segurança</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/carreira-na-honda/', false)" appGtmEvent>
+                        <span>Carreira na Honda</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/institucional/inovacao/asimo', false)" appGtmEvent>
+                        <span>Inovação</span>
+                    </a>
+                </li>
+            </div>
+            <div class="submenu" [ngClass]="{'expanded' : subMenus.showSubmenuConcessionarias}">
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/automoveis/concessionarias/busca', false)" appGtmEvent>
+                        <span>Automóveis</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/motos/concessionarias', false)" appGtmEvent>
+                        <span>Motocicletas</span>
+                    </a>
+                </li>
+                <li class="itens-submenu-2">
+                    <a (click)="redirect('https://www.honda.com.br/busca/motores-e-maquinas', false)" appGtmEvent>
+                        <span>Motores e Máquinas</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="offcanvas-backdrop" (click)="openMenu()"></div>

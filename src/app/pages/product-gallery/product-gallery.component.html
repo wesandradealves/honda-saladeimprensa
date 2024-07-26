@@ -1,0 +1,256 @@
+<app-breadcrumb
+    [routeParent]="linkPage"
+    [nameParent]="nameCategory"
+    [nameChildren]="namePage"
+    [type]="'container'"
+></app-breadcrumb>
+<div class="container mt-5">
+    <section class="releases" *ngIf="releases">
+        <div class="releases row">
+            <h3 class="title-section col-12 text-center text-lg-left">
+                Galerias de {{ typePage }} <span>"{{ nameCategory }}"</span>
+            </h3>
+            <div class="wrapper">
+                <div class="releases-list">
+                    <div class="row">
+                        <div
+                            class="col-12 col-lg-6"
+                            *ngFor="
+                                let release of releases
+                                    | slice: pageSize
+                                    | slice: 0:itemsPerPage
+                            "
+                        >
+                            <div
+                                class="box d-flex flex-row"
+                                *ngIf="typeGalery == 'imagem'"
+                            >
+                                <div
+                                    class="image"
+                                    data-toggle="modal"
+                                    [attr.data-target]="
+                                        '#imageModal' + release.image_id
+                                    "
+                                    (click)="loadModalGallery(release.nid)"
+                                >
+                                    <img
+                                        *ngIf="release.image_preview"
+                                        [lazyLoad]="url + release.image_preview"
+                                        class="img-fluid"
+                                    />
+                                    <img
+                                        *ngIf="!release.image_preview"
+                                        src="../../../assets/img/honda_logo_thumb.png"
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div
+                                        class="title"
+                                        data-toggle="modal"
+                                        [attr.data-target]="
+                                            '#imageModal' + release.image_id
+                                        "
+                                        (click)="loadModalGallery(release.nid)"
+                                    >
+                                        {{ release.title }}
+                                    </div>
+                                    <div
+                                        class="text"
+                                        data-toggle="modal"
+                                        [attr.data-target]="
+                                            '#imageModal' + release.image_id
+                                        "
+                                        (click)="loadModalGallery(release.nid)"
+                                    >
+                                        {{ release.count_items }}
+                                        {{
+                                            getMediaTypeDesc(
+                                                release.count_items
+                                            )
+                                        }}
+                                    </div>
+                                    <div class="actions">
+                                        <download-button
+                                            [isGallery]="true"
+                                            [id]="release.nid"
+                                            [isImage]="true"
+                                            [origin]="'galleries'"
+                                        ></download-button>
+                                        <div
+                                            class="add-cart"
+                                            (click)="
+                                                addToCart(
+                                                    'galleries',
+                                                    release.nid,
+                                                    release.title,
+                                                    release.image_preview
+                                                )
+                                            "
+                                        >
+                                            <img
+                                                [src]="
+                                                    fileService.hasFileCart(
+                                                        release.nid
+                                                    )
+                                                        ? '../../../assets/img/added-cart.svg'
+                                                        : '../../../assets/img/add-cart.svg'
+                                                "
+                                                class="img-fluid"
+                                            />
+                                        </div>
+                                        <a
+                                            class="see-details"
+                                            data-toggle="modal"
+                                            [attr.data-target]="
+                                                '#imageModal' + release.image_id
+                                            "
+                                            (click)="
+                                                loadModalGallery(release.nid)
+                                            "
+                                        >
+                                            <span> {{ seeMore }} </span></a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="box d-flex flex-row"
+                                *ngIf="typeGalery == 'video'"
+                            >
+                                <div
+                                    class="image"
+                                    data-toggle="modal"
+                                    [attr.data-target]="
+                                        '#imageModal' + release.nid
+                                    "
+                                    (click)="loadModalGallery(release.nid)"
+                                >
+                                    <img
+                                        *ngIf="release.image_preview"
+                                        [lazyLoad]="url + release.image_preview"
+                                        class="img-fluid"
+                                    />
+                                    <img
+                                        *ngIf="!release.image_preview"
+                                        src="../../../assets/img/honda_logo_thumb.png"
+                                        class="img-fluid"
+                                    />
+                                    <img
+                                        class="icon-play"
+                                        src="../../../assets/img/icon_play.png"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div
+                                        class="title"
+                                        data-toggle="modal"
+                                        [attr.data-target]="
+                                            '#imageModal' + release.nid
+                                        "
+                                        (click)="loadModalGallery(release.nid)"
+                                    >
+                                        {{ release.title }}
+                                    </div>
+                                    <div
+                                        class="text"
+                                        data-toggle="modal"
+                                        [attr.data-target]="
+                                            '#imageModal' + release.nid
+                                        "
+                                        (click)="loadModalGallery(release.nid)"
+                                    >
+                                        {{ release.count_items }}
+                                        {{
+                                            getMediaTypeDesc(
+                                                release.count_items
+                                            )
+                                        }}
+                                    </div>
+                                    <div class="actions">
+                                        <download-button
+                                            [isGallery]="true"
+                                            [hidden]="isHidden(release)"
+                                            [id]="release.nid"
+                                            [isImage]="true"
+                                            [origin]="'galleries'"
+                                        ></download-button>
+                                        <div
+                                            class="add-cart"
+                                            [hidden]="isHidden(release)"
+                                            (click)="
+                                                addToCart(
+                                                    'galleries',
+                                                    release.nid,
+                                                    'Vídeo',
+                                                    release.image_preview
+                                                )
+                                            "
+                                        >
+                                            <img
+                                                [src]="
+                                                    fileService.hasFileCart(
+                                                        release.nid
+                                                    )
+                                                        ? '../../../assets/img/added-cart.svg'
+                                                        : '../../../assets/img/add-cart.svg'
+                                                "
+                                                class="img-fluid"
+                                            />
+                                        </div>
+                                        <a
+                                            class="see-details"
+                                            data-toggle="modal"
+                                            [attr.data-target]="
+                                                '#imageModal' + release.nid
+                                            "
+                                            (click)="
+                                                loadModalGallery(release.nid)
+                                            "
+                                        >
+                                            <span> {{ seeMore }} </span></a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="typeGalery == 'imagem'">
+                                <app-modal-gallery
+                                    *ngIf="selectedGallery == release.nid"
+                                    [id]="release.nid"
+                                    [title]="release.title"
+                                    [imageId]="release.image_id"
+                                ></app-modal-gallery>
+                            </div>
+                            <div *ngIf="typeGalery == 'video'">
+                                <app-modal-gallery
+                                    *ngIf="selectedGallery == release.nid"
+                                    [id]="release.nid"
+                                    [title]="release.title"
+                                    [video]="true"
+                                ></app-modal-gallery>
+                            </div>
+                        </div>
+                        <div class="pagination-box">
+                            <ngb-pagination
+                                [collectionSize]="totalItems"
+                                #numPages
+                                [pageSize]="itemsPerPage"
+                                [(page)]="currentPage"
+                                (pageChange)="onPageChange(currentPage)"
+                            >
+                                <div class="arrow">
+                                    <ng-template ngbPaginationPrevious
+                                        >Anterior</ng-template
+                                    >
+                                    <ng-template ngbPaginationNext
+                                        >Próximo</ng-template
+                                    >
+                                </div>
+                            </ngb-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

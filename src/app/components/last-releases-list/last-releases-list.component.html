@@ -1,0 +1,249 @@
+<div class="releases row pt-5">
+    <h3 class="title-section col-12 text-center text-lg-left">
+        Últimos releases
+    </h3>
+    <div class="wrapper">
+        <ngx-loading
+            [show]="isLoading"
+            [config]="{
+                backdropBackgroundColour: '#ffffff',
+                primaryColour: '#cd2b14',
+                secondaryColour: '#cd2b14',
+                tertiaryColour: '#cd2b14'
+            }"
+        ></ngx-loading>
+        <ul class="releases-categories" *ngIf="!productId && !parentId">
+            <div class="mobile-filter">
+                <div class="title">Filtrar categoria:</div>
+                <select
+                    name="filterList"
+                    id="filterList"
+                    [(ngModel)]="selectedSegment"
+                    (change)="filterReleasesMobile($event)"
+                >
+                    <option
+                        value="0"
+                        [ngClass]="{ active: selectedSegment == 0 }"
+                        class="active all-sm-filter"
+                        appGtmEvent
+                        gtm-category="todos os releases"
+                        gtm-action="header"
+                        gtm-label="todas"
+                    >
+                        Todas
+                    </option>
+                    <option
+                        *ngFor="let segment of segments"
+                        [ngClass]="{
+                            active: selectedSegment == segment.segment_id
+                        }"
+                        value="{{ segment.segment_id }}"
+                        appGtmEvent
+                        gtm-category="todos os releases"
+                        gtm-action="header"
+                        gtm-label="{{ segment.segment_name }}"
+                    >
+                        {{ segment.segment_name }}
+                    </option>
+                </select>
+            </div>
+            <li
+                [ngClass]="{ active: selectedSegment == 0 }"
+                class="active all-lg-filter"
+                (click)="filterReleases(0)"
+                appGtmEvent
+                gtm-category="todos os releases"
+                gtm-action="header"
+                gtm-label="todas"
+            >
+                Todos
+            </li>
+            <li
+                id="filterList"
+                *ngFor="let segment of segments"
+                [ngClass]="{ active: selectedSegment == segment.segment_id }"
+                class="active collapse show sm-filter d-none d-lg-flex"
+                (click)="filterReleases(segment.segment_id)"
+                appGtmEvent
+                gtm-category="todos os releases"
+                gtm-action="header"
+                gtm-label="{{ segment.segment_name }}"
+            >
+                {{ segment.segment_name }}
+            </li>
+        </ul>
+        <div *ngIf="!isLoading" class="releases-list">
+            <div class="row pb-5">
+                <div
+                    class="col-lg-12"
+                    *ngFor="
+                        let release of releases
+                            | slice: pageSize
+                            | slice: 0:itemsPerPage
+                    "
+                >
+                    <div class="box">
+                        <a
+                            class="image"
+                            [routerLink]="release.content_url"
+                            appGtmEvent
+                            gtm-category="todos os releases"
+                            gtm-action="pagina"
+                            gtm-label="clique:{{ release.title }}"
+                        >
+                                    <img
+                                        *ngIf="
+                                            release.field_field_releases_embed
+                                        "                                    
+                                        [lazyLoad]="
+                                            url + release.field_field_releases_embed
+                                        "
+                                        class="img-fluid"
+                                        alt="{{ release.title }}"
+                                    />  
+                                    <img
+                                        *ngIf="
+                                            release.field_release_gallery_image && !release.field_field_releases_embed
+                                        "
+                                        src="{{ url }}{{
+                                            release.field_release_gallery_image
+                                        }}"
+                                        class="img-fluid"
+                                        loading="lazy"
+                                        alt="{{ release.title }}"
+                                    />                                  
+                                    <img
+                                        *ngIf="
+                                            !release.field_release_gallery_image && !release.field_field_releases_embed
+                                        "
+                                        src="../../../assets/img/honda_logo_thumb.png"
+                                        class="img-fluid"
+                                        loading="lazy"
+                                        alt="{{ release.title }}"
+                                    />
+                        </a>
+                        <div class="info">
+                            <a
+                                class="subtitle"
+                                [routerLink]="release.content_url"
+                                appGtmEvent
+                                gtm-category="todos os releases"
+                                gtm-action="pagina"
+                                gtm-label="clique:{{ release.title }}"
+                            >
+                                <div class="date">{{ release.created_at }}</div>
+                                <div class="category">
+                                    {{ release.segment_title }}
+                                </div>
+                            </a>
+                            <a
+                                class="title"
+                                [routerLink]="release.content_url"
+                                appGtmEvent
+                                gtm-category="todos os releases"
+                                gtm-action="pagina"
+                                gtm-label="clique:{{ release.title }}"
+                            >
+                                {{ release.title }}
+                            </a>
+                            <a
+                                class="text"
+                                [routerLink]="release.content_url"
+                                [innerHTML]="release.body"
+                                appGtmEvent
+                                gtm-category="todos os releases"
+                                gtm-action="pagina"
+                                gtm-label="clique:{{ release.title }}"
+                            ></a>
+                            <div class="actions">
+                                <download-button
+                                    [releaseId]="release.id"
+                                    [hidden]="!release.file_id"
+                                    [id]="release.file_id"
+                                    [origin]="'files'"
+                                    appGtmEvent
+                                    gtm-category="todos os releases"
+                                    gtm-action="pagina"
+                                    gtm-label="download:{{ release.title }}"
+                                ></download-button>
+                                <div
+                                    [hidden]="!release.file_id"
+                                    class="add-cart"
+                                    (click)="
+                                        addToCart(
+                                            release.file_id,
+                                            release.title,
+                                            release.field_release_gallery_image,
+                                            release.id
+                                        )
+                                    "
+                                    appGtmEvent
+                                    gtm-category="todos os releases"
+                                    gtm-action="pagina"
+                                    gtm-label="add meus arquivos:{{
+                                        release.title
+                                    }}"
+                                >
+                                    <img
+                                        [src]="
+                                            fileService.hasFileCart(
+                                                release.file_id
+                                            )
+                                                ? '../../../assets/img/added-cart.svg'
+                                                : '../../../assets/img/add-cart.svg'
+                                        "
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <a
+                                    class="see-details"
+                                    [routerLink]="release.content_url"
+                                    appGtmEvent
+                                    gtm-category="todos os releases"
+                                    gtm-action="pagina"
+                                    gtm-label="ver mais:{{ release.title }}"
+                                >
+                                    <span>Veja Mais</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="pagination-box"
+                    *ngIf="releases?.length && showPagination"
+                >
+                    <ngb-pagination
+                        [collectionSize]="totalItems"
+                        [(page)]="pageNumber"
+                        [maxSize]="5"
+                        [rotate]="true"
+                        (pageChange)="onPageChange(pageNumber)"
+                        [pageSize]="10"
+                    >
+                        <div class="arrow">
+                            <ng-template ngbPaginationPrevious
+                                ><span
+                                    appGtmEvent
+                                    gtm-category="todos os releases"
+                                    gtm-action="pagina"
+                                    gtm-label="pagina anterior"
+                                    >Anterior</span
+                                ></ng-template
+                            >
+                            <ng-template ngbPaginationNext
+                                ><span
+                                    appGtmEvent
+                                    gtm-category="todos os releases"
+                                    gtm-action="pagina"
+                                    gtm-label="pagina proximo"
+                                    >Próximo</span
+                                ></ng-template
+                            >
+                        </div>
+                    </ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

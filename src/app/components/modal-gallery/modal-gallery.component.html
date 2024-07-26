@@ -1,0 +1,209 @@
+<div
+    class="images-gallery modal show"
+    id="imageModal{{ imageId || id }}"
+    tabindex="-1"
+    role="dialog"
+    aria-hidden="true"
+    #rootEl
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-dialog-centered container-fluid">
+            <!--Top Row-->
+            <div
+                class="header-modal row align-items-center mb-lg-5 py-3 py-lg-4 px-2 px-lg-5"
+            >
+                <div class="col-10 col-lg-5 col-xl-6">
+                    <div class="title text-left py-2">
+                        Galeria de {{ typeGallery }} <br class="d-lg-none" />
+                        <span>{{ title }}</span> <br />
+                        <span class="image-counter"
+                            >{{ counter }}/{{ gallery.length }}
+                            {{ typeGallery }}</span
+                        >
+                    </div>
+                </div>
+                <div
+                    class="col-2 col-lg-7 col-xl-6 d-flex flex-row align-items-center justify-content-md-end text-right px-0"
+                >
+                    <div
+                        class="files-content d-flex flex-row desk"
+                        *ngIf="!isMobile"
+                    >
+                        <div
+                            [hidden]="isHidden()"
+                            class="d-icon mr-2 mr-sm-4 position-relative"
+                        >
+                            <download-button
+                                [galleryId]="id"
+                                [insideModal]="true"
+                                [id]="currentId()"
+                                [origin]="'files'"
+                                [isImage]="true"
+                            ></download-button>
+                        </div>
+                        <div class="mr-2 mr-sm-4 position-relative">
+                            <add-cart-button
+                                [hidden]="isHidden()"
+                                (click)="
+                                    video ? addToCart('files') : selectSize()
+                                "
+                                [id]="currentId()"
+                                >Adicionar</add-cart-button
+                            >
+
+                            <app-modal-file-size
+                                *ngIf="!video && showModalFilesSizes"
+                                origin="files"
+                                [id]="gallery[currentSlide]?.image_id"
+                                (onSizeClicked)="addToCart('files', $event)"
+                            ></app-modal-file-size>
+                        </div>
+                        <span [hidden]="isHidden()" class="files-border"></span>
+                        <div class="ml-3 mr-2 mr-sm-4 position-relative">
+                            <add-cart-button
+                                [hidden]="isHidden()"
+                                (click)="
+                                    video
+                                        ? addToCart('galleries')
+                                        : selectSizeAll()
+                                "
+                                [id]="id"
+                                >Adicionar toda a galeria</add-cart-button
+                            >
+
+                            <app-modal-file-size
+                                *ngIf="showModalFilesSizesAll"
+                                origin="galleries"
+                                [id]="id"
+                                (onSizeClicked)="addToCart('galleries', $event)"
+                            ></app-modal-file-size>
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        (click)="closeModal()"
+                    >
+                        <img
+                            class="img-fluid"
+                            src="assets/img/btn_close.png"
+                            alt="fechar"
+                        />
+                    </button>
+                </div>
+            </div>
+            <!--Center Row-->
+            <ngx-slick-carousel
+                [ngClass]="{ 'slider-video': video == true }"
+                class="carousel slider-for slider-gallery"
+                #slickModal="slick-carousel"
+                [config]="slideConfigGallery"
+                (init)="slickInit($event)"
+                (afterChange)="afterChange($event)"
+                (beforeChange)="beforeChange($event)"
+            >
+                <div
+                    ngxSlickItem
+                    *ngFor="let photo of gallery; let index = index"
+                    class="slide"
+                >
+                    <img
+                        class="img-inside-modal"
+                        *ngIf="!video"
+                        src="{{ url }}{{ photo.image_preview }}"
+                        alt="{{ photo.title }}"
+                        width="100%"
+                    />
+                    <iframe
+                        class="iframe"
+                        *ngIf="video && isOpen && currentSlide === index"
+                        width="560"
+                        height="500"
+                        [src]="photo.video | safe"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+            </ngx-slick-carousel>
+
+            <div class="files-content d-flex flex-row mob" *ngIf="isMobile">
+                <div [hidden]="isHidden()" class="d-icon mr-2 mr-sm-4">
+                    <download-button
+                        [galleryId]="id"
+                        [insideModal]="true"
+                        [id]="currentId()"
+                        [origin]="'files'"
+                        [isImage]="true"
+                    ></download-button>
+                </div>
+                <div class="mr-2 mr-sm-4">
+                    <add-cart-button
+                        [hidden]="isHidden()"
+                        (click)="video ? addToCart('files') : selectSize()"
+                        [id]="currentId()"
+                    ></add-cart-button>
+                    <app-modal-file-size
+                        *ngIf="!video && showModalFilesSizes"
+                        origin="files"
+                        [id]="gallery[currentSlide]?.image_id"
+                        (onSizeClicked)="addToCart('files', $event)"
+                    ></app-modal-file-size>
+                </div>
+
+                <span [hidden]="isHidden()" class="files-border"></span>
+                <div class="ml-3 mr-2 mr-sm-4 position-relative">
+                    <add-cart-button
+                        [hidden]="isHidden()"
+                        (click)="
+                            video ? addToCart('galleries') : selectSizeAll()
+                        "
+                        [id]="id"
+                        >Adicionar toda a galeria</add-cart-button
+                    >
+                    <app-modal-file-size
+                        *ngIf="showModalFilesSizesAll"
+                        origin="galleries"
+                        [id]="id"
+                        (onSizeClicked)="addToCart('galleries', $event)"
+                    ></app-modal-file-size>
+                </div>
+            </div>
+
+            <ngx-slick-carousel
+                class="carousel slider-nav"
+                #slickModalNav="slick-carousel"
+                [config]="slideConfigThumb"
+                id="slider-nav"
+                (afterChange)="afterChange($event)"
+            >
+                <div ngxSlickItem *ngFor="let photo of gallery" class="slide">
+                    <img
+                        *ngIf="photo.image_thumbnail || photo.image_preview"
+                        class="img-nav"
+                        src="{{ url }}{{
+                            photo.image_thumbnail || photo.image_preview
+                        }}"
+                        alt="{{ photo.title }}"
+                        width="100%"
+                    />
+                    <img
+                        *ngIf="!photo.image_thumbnail && !photo.image_preview"
+                        class="img-nav"
+                        src="../../../assets/img/honda_logo_thumb.png"
+                        alt="{{ photo.title }}"
+                        width="100%"
+                    />
+
+                    <img
+                        *ngIf="video"
+                        class="icon-play"
+                        src="../../../assets/img/icon_play.png"
+                    />
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div>

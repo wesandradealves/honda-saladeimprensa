@@ -1,0 +1,104 @@
+.racing {
+    padding-top: 50px;
+    width: 100%;
+    // margin: 0 0 60px 0;
+    &.container {
+        max-width: 1366px !important;
+    }
+    .row {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .racing-block {
+        .block-text {
+            .header {
+                margin-bottom: 38px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #D3D3D3;
+                position: relative;
+
+                .title {
+                    font-size: 28px;
+                    line-height: 37px;
+                    font-weight: bold;
+                    color: #3D3D3E;
+
+                    @media screen and (max-width: 765px) {
+                        word-wrap: break-word;
+                    }
+                }
+
+                hr {
+                    border-color: #CD2B14;
+                    position: absolute;
+                    bottom: -1px;
+                    left: 0;
+                    width: 45px;
+                    margin: 0px;
+                }
+            }
+
+            .text {
+                font-size: 14px;
+                line-height: 24px;
+                color: #5C5C5C;
+                margin-bottom: 35px;
+
+                @media screen and (max-width: 765px) {
+                    font-size: 16px;
+                }
+            }
+
+            .btn-racing {
+                font-size: 16px;
+                line-height: 21px;
+                color: #ffffff;
+                background: #CD2B14;
+                border-radius: 4px;
+                padding: 8px 0;
+                width: 300px;
+                text-align: center;
+
+                @media screen and (max-width: 765px) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .racing-image {
+        width: 100%;
+        margin: 20px 0;
+
+        img {
+            width: 100%;
+
+            @media screen and (max-width: 765px) {
+                border-radius: 4px;
+            }
+        }
+    }
+}
+.more-contents {
+    background: linear-gradient(#FFFFFF, #F2F2F2);
+}
+
+.social-media {
+    width: 100%;
+    margin: 0px;
+}
+
+.only-desk {
+    @media screen and (max-width: 765px) {
+        display: none;
+    }
+}
+
+.only-mob {
+    display: none;
+
+    @media screen and (max-width: 765px) {
+        display: block;
+    }
+}

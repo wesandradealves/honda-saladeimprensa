@@ -1,0 +1,67 @@
+@import "../../../assets/scss/variables";
+
+nav.footer-menu {
+    background-color: $black;
+    // max-height: 60vh;
+    // overflow-y: scroll;
+
+    .menu-with-sub {
+        border-bottom: $rule-secondary;
+        .menu-item {
+            border-top: $rule-secondary;
+            @media (min-width: $lg) {
+                &.corporative {
+                    border-top: none;
+                }
+            }
+        }
+    }
+    .menu-item {
+        padding-top: 1.6rem;
+        padding-bottom: 0;
+        text-align: center;
+        @media (min-width: $lg) {
+            padding-bottom: 1.6rem;
+            text-align: left;
+        }
+    }
+    .menu-subitem {
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+
+        &.has-subitems {
+            color: $gray-500;
+            font-weight: bold;
+        }
+
+        @media (min-width: $lg) {
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+            text-align: left;
+            &.corporative {
+                border-top: none;
+            }
+        }
+        &.subtitle {
+            @media (min-width: $lg) {
+                padding-left: 3rem;
+            }
+        }
+    }
+
+    button.menu-subitem-title {
+        color: $color-text-light;
+        padding-left: 0;
+        img {
+            transition: all 0.35s;
+        }
+        &:hover {
+            text-decoration: solid;
+        }
+        &[aria-expanded="true"] {
+            img {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}

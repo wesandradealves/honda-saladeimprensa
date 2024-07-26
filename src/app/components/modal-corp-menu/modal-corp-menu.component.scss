@@ -1,0 +1,53 @@
+@import "../../../assets/scss/variables";
+
+.modal {
+    padding: 0 !important;
+    cursor: initial;
+    z-index: 999999  !important;
+    .modal-dialog {
+        min-height: 100% !important;
+        height: 100% !important;
+        max-width: 100%;
+        margin: auto;
+        cursor: initial;
+
+        .modal-content {
+            background-color: rgba($black, 0.8);
+            margin: auto;
+            width: 100%;
+            height: auto;
+            flex-direction: initial;
+            .submenu {
+                background-color: $color-primary;
+                border-radius: $radius;
+                margin: auto;
+                max-width: 414px;
+                height: auto;
+
+                .title {
+                    font-size: $font-md;
+                    border-bottom: 3px solid $orange;
+                    padding-left: 2rem;
+                }
+                .item {
+                    padding-left: 2rem;
+                    border-bottom: $rule-secondary;
+                }
+                .close-menu {
+                    border-top: 1px solid $orange;
+                    background-color: $color-primary;
+                    padding-top: 2rem;
+                    padding-bottom: 2.5rem;
+                    button {
+                        font-size: 14px;
+                        color: $color-secondary;
+                        border-bottom: 2px solid $orange;
+                    }
+                }
+            }
+        }
+    }
+    .modal-dialog-centered {
+        min-height: 100% !important;
+    }
+}

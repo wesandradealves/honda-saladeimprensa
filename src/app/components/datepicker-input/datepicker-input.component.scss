@@ -1,0 +1,140 @@
+@import "../../../assets/scss/variables";
+
+.input-group {
+    width: 9.125rem;
+
+    input {
+        border-right: 0;
+        font-size: $font-xs;
+    }
+
+    .input-group-append {
+        .calendar {
+            min-width: 2rem;
+            background-color: transparent;
+            background-image: url("./../../../assets/img/icon-calendar.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            border: 1px solid #ced4da;
+            border-left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+    }
+}
+
+.datepicker-inline {
+  position: absolute;
+  top: 40px;
+  left: -30%;
+}
+
+.datepicker-custom-content {
+    position: relative;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    .bg {
+        position: absolute;
+        z-index: 1;
+        top: -19px;
+        width: 100%;
+    }
+}
+
+.custom-datepicker {
+    border: none !important;
+    display: block;
+    background-color: white;
+    z-index: 2;
+    position: relative;
+
+    .ngb-dp-header {
+        display: none !important;
+    }
+
+    .custom-navigation {
+        background-color: white;
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+
+        .btn {
+            border: none;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+
+            .icon-nav {
+                display: inline-block;
+                background-image: url("./../../../assets/img/icon-calendar-navigation.svg");
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+                height: 10px;
+                width: 5px;
+
+                &.last {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        span {
+            font-size: 12px;
+            color: #5c5c5c;
+            text-align: center;
+        }
+    }
+}
+
+.month {
+    border-radius: 4px;
+}
+
+.ngb-dp-week {
+    display: inline-grid !important;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    text-align: center;
+    font-size: 12px;
+
+    &.weeks {
+        color: #dddddd;
+        border-radius: 0;
+    }
+}
+
+.custom-day {
+    border-radius: 0.25rem;
+    display: inline-flex;
+    font-size: 0.75rem;
+    color: #5c5c5c;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+}
+
+.custom-day:hover,
+.custom-day.focused,
+.custom-day.bg-primary {
+    background-color: $orange !important;
+    border-radius: 1rem;
+    color: white;
+}
+
+.hidden {
+    color: #dddddd;
+}
+
+.ngb-dp-today {
+    background-color: #f0ad4e;
+    border-radius: 1rem;
+    color: white;
+}

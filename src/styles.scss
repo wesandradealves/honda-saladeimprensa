@@ -1,0 +1,80 @@
+@import "assets/scss/_reset.scss";
+@import "assets/scss/_variables.scss";
+@import '~ngx-sharebuttons/themes/default/default-theme';
+@import '~ngx-sharebuttons/themes/circles/circles-light-theme';
+
+/*Base-Styles*/
+html,
+body {
+    background-color: $color-bg !important;
+    font-family: $font-stack-primary !important;
+    font-size: $font-sm !important;
+}
+
+body {
+    padding-top: 135px;
+    @media (min-width: $lg) {
+        padding-top: 80px;
+    }
+}
+
+html,
+body,
+.container {
+    min-width: 375px;
+}
+
+/*Containers*/
+.container {
+    max-width: 1100px;
+
+    @media (min-width: $xxl) {
+        max-width: 1180px;
+    }
+
+    @media (min-width: $full) {
+        max-width: 1280px;
+    }
+}
+
+.row {
+    @media (max-width: $lg) {
+        // margin-left: 0 !important;
+        // margin-right: 0 !important;
+    }
+
+}
+
+/*Buttons*/
+a,
+button {
+    -webkit-transition: 0.35s ease;
+    transition: 0.35s ease;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    color: inherit !important;
+}
+
+/* Utilities */
+.overlay {
+    background-color: rgba($black, 0.4);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.gradient-bg {
+    background: linear-gradient(#ffffff, #f2f2f2);
+}
+
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

@@ -1,0 +1,24 @@
+<div>
+    <div class="modal-body">
+      <span class="icon">!</span>
+      <p>Tem certeza que deseja <br> excluir todos os arquivos <br>  da sua pasta?</p>
+      <button 
+        type="button"
+        class="btn"
+        (click)="removeAllFiles()"
+        >
+        Sim, quero excluir
+      </button>
+
+      <button 
+      class="cancel-button"
+      type="button"
+      (click)="close();"
+      >
+     Cancelar
+    </button>
+    </div>                       
+
+</div>
+
+  <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->

@@ -1,0 +1,88 @@
+<app-racing-banner></app-racing-banner>
+<app-breadcrumb
+    [routeParent]=""
+    [nameParent]=""
+    [nameChildren]="'Racing Spirit'"
+    [type]="'column'"
+></app-breadcrumb>
+<div
+    class="racing container"
+    *ngFor="let post of posts; let x = index; let even = even"
+>
+    <div class="row" *ngIf="even">
+        <div class="col col-md-6">
+            <div class="racing-block pr-md-5">
+                <div class="block-text">
+                    <div class="header">
+                        <h2 class="title" [innerHTML]="post.title"></h2>
+                        <hr />
+                    </div>
+
+                    <div class="racing-image only-mob">
+                        <img
+                            class="img-fluid"
+                            src="{{ url }}{{ post.urlimage }}"
+                            alt="{{ post.title }}"
+                        />
+                    </div>
+
+                    <div class="text" [innerHTML]="post.summary"></div>
+
+                    <a href="{{ post.link_content }}" target="_blank">
+                        <div class="btn-racing">Saiba mais</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 pl-md-0 only-desk">
+            <div class="racing-image">
+                <img
+                    class="img-fluid"
+                    src="{{ url }}{{ post.urlimage }}"
+                    alt="{{ post.title }}"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="!even">
+        <div class="col-md-6 pr-md-0 only-desk">
+            <div class="racing-image">
+                <img
+                    class="img-fluid"
+                    src="{{ url }}{{ post.urlimage }}"
+                    alt="{{ post.title }}"
+                />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="racing-block pl-md-5">
+                <div class="block-text">
+                    <div class="header">
+                        <div class="title" [innerHTML]="post.title"></div>
+                        <hr />
+                    </div>
+
+                    <div class="racing-image only-mob">
+                        <img
+                            class="img-fluid"
+                            src="{{ url }}{{ post.urlimage }}"
+                            alt="{{ post.title }}"
+                        />
+                    </div>
+
+                    <div class="text" [innerHTML]="post.summary"></div>
+
+                    <a href="{{ post.link_content }}" target="_blank">
+                        <div class="btn-racing">Saiba mais</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="more-contents">
+    <app-racing-more-contents></app-racing-more-contents>
+</div>
+<section class="social-media">
+    <app-racing-social-media></app-racing-social-media>
+</section>

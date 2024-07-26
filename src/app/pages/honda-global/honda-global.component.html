@@ -1,0 +1,22 @@
+<app-product-banner [global]="id"></app-product-banner>
+<app-breadcrumb
+    [routeParent]="rota"
+    [nameParent]="name"
+    [intermediateName]="name"
+    [intermediateRoute]="rota"
+    [nameChildren]="'Modelos Globais'"
+    [type]="'container'"
+></app-breadcrumb>
+<app-product-releases [global]="id"></app-product-releases>
+<app-product-gallery-inside
+    [typeGalery]="'imagem'"
+    [category]="type"
+    [global]="id"
+></app-product-gallery-inside>
+<app-product-gallery-inside
+    [typeGalery]="'video'"
+    [category]="type"
+    [global]="id"
+></app-product-gallery-inside>
+
+<!-- <app-product-related-content [parentName]="'motocicletas'"></app-product-related-content> -->

@@ -1,0 +1,72 @@
+<section class="banner">
+    <div class="fixed-banner">
+        <div class="overlay">
+            <h1 class="title">{{ bannerTitle }}</h1>
+        </div>
+        <img class="img-fluid" [src]="bannerUrl" alt="Honda Logo" />
+    </div>
+</section>
+<app-breadcrumb
+    [nameChildren]="'Contatos'"
+    [type]="'container'"
+></app-breadcrumb>
+<section class="page-contacts" *ngIf="contact">
+    <div class="main">
+        <div class="col" *ngFor="let col of contact.columns">
+            <a class="honda-logo" routerLink="/home">
+                <img
+                    class="img-fluid"
+                    src="{{ url }}{{ col.logo }}"
+                    alt="Honda Logo"
+                />
+            </a>
+            <div *ngFor="let content of col.column_content; let i = index">
+                <h4 [ngClass]="{ first: i == 0 }" class="title">
+                    {{ content.title }}
+                </h4>
+                <div class="contact" *ngFor="let data of content.contact_data">
+                    <div>
+                        <strong>{{ data.name }}</strong>
+                        <a href="mailto:{{ data.email }}"
+                            ><span>{{ data.email }}</span></a
+                        >
+                        <div class="number-contact">
+                            <div *ngIf="data.phone">tel: {{ data.phone }}</div>
+                            <div *ngIf="data.phone && data.mobile">/</div>
+                            <div *ngIf="data.mobile">
+                                cel: {{ data.mobile }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="general" *ngFor="let manager of contact.pr_manager">
+        <h4 class="title">{{ manager.title }}</h4>
+        <div class="contact" *ngFor="let data of manager.contact_data">
+            <p>
+                <strong>{{ data.name }}</strong>
+                <br />
+                <a href="mailto:{{ data.email }}"
+                    ><span>{{ data.email }}</span></a
+                >
+            </p>
+        </div>
+    </div>
+    <div class="journalism">
+        <h6 class="title">{{ contact.general_contact_title }}</h6>
+        <div class="contact-list">
+            <div
+                class="contact"
+                *ngFor="let gcontent of contact.general_contacts"
+            >
+                <p>
+                    <strong>{{ gcontent.name }}</strong>
+                    <br />
+                    {{ gcontent.phone }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+<div class="social-medias container">
+    <h2 class="section-title">Honda nas redes sociais</h2>
+    <div class="row">
+        <div [ngClass]="{'col-lg-6': social.type === 'video' || social.type == 'channel', 'col-lg-3' : social.type === 'photo' }" *ngFor="let social of socialMedias">
+            <div class="hold-social" *ngIf="social.type == 'video'">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/qd1EGzSudog" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="hold-social text-center" *ngIf="social.type == 'photo' || social.type == 'channel'">
+                <a href="{{social.url}}" target="_blank">
+                    <img class="img-fluid" src="{{url}}{{social.thumbs}}" alt="{{social.nome_rede}}">
+
+                    <div class="name-block" [ngClass]="{'facebook': social.icon === 'fab fa-facebook-f', 'linkedin' : social.icon === 'fab fa-linkedin-in' }">
+                        <div class="label"><i class="{{social.icon}}"></i></div>
+                        <div class="name">{{social.nome_rede}}</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1259 @@
+<div *ngFor="let release of releaseDetail">
+    <app-breadcrumb
+        [routeParent]="'ultimos-releases/' + release.segment_title"
+        [nameParent]="release.segment_title"
+        [nameChildren]="release.title"
+        [type]="'column'"
+        [release]="true"
+        [releaseSegment]="release.segment_title"
+        [releaseCorporate]="release.corporative_content_slug"
+        [releaseCorporateTitle]="release.corporate_content_title"
+    >
+    </app-breadcrumb>
+
+    <div class="release row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="release-print">
+                        <div class="header">
+                            <div class="subtitle">
+                                <div class="date">{{ release.created_at }}</div>
+
+                                <div class="category">
+                                    {{ release.segment_title }}
+                                </div>
+                            </div>
+
+                            <h1 class="title">{{ release.title }}</h1>
+                        </div>
+
+                        <div *ngIf="release.featured_gallery_image && release.featured_gallery_image.length">
+                            <ng-container
+                                *ngFor="
+                                    let gallery of release.featured_gallery_image
+                                "
+                            >
+                                <div
+                                    *ngIf="gallery.field_releases_embed"
+                                    class="image-release"
+                                    data-toggle="modal"
+                                    [attr.data-target]="'#imageModal'"
+                                    data-slide-to="0"
+                                    (click)="
+                                        loadModalGallery(
+                                            gallery.field_releases_embed_gallery
+                                        )
+                                    "
+                                >
+                                    <img
+                                        class="img-fluid lead-image"
+                                        src="{{ url }}{{
+                                            gallery.field_releases_embed
+                                        }}"
+                                        alt="{{ release.title }}"
+                                    />
+                                </div>
+                                <div *ngIf="!gallery.field_releases_embed">
+                                    <img
+                                        class="img-fluid lead-image"
+                                        src="../../../assets/img/honda_logo_thumb.png"
+                                        alt="{{ release.title }}"
+                                    />
+                                </div>
+                            </ng-container>
+                        </div>
+                        
+                        <div *ngIf="!release.featured_gallery_image && !release.featured_gallery_image.length">
+                            <img
+                                *ngIf="release.field_releases_featured_image_export.field_releases_embed"
+                                class="img-fluid lead-image"
+                                src="{{ url }}{{
+                                    release.field_releases_featured_image_export.field_releases_embed
+                                }}"
+                                alt=""
+                            />                  
+                            <img
+                                *ngIf="!release.field_releases_featured_image_export.field_releases_embed && image_preview"
+                                class="img-fluid lead-image"
+                                src="{{ url }}{{
+                                    image_preview
+                                }}"
+                                alt=""
+                            />                                           
+                            <img
+                                *ngIf="!release.field_releases_featured_image_export.field_releases_embed && !image_preview"
+                                class="img-fluid lead-image"
+                                src="../../../assets/img/honda_logo_thumb.png"
+                                alt=""
+                            />
+                        </div>
+                        <br/>
+                        <div
+                            class="text-excerpt"
+                            *ngIf="release.excerpt"
+                            [innerHTML]="release.excerpt"
+                        ></div>
+
+                        <div
+                            class="text-inner"
+                            [innerHTML]="release.body"
+                        ></div>
+
+                        <div
+                            class="subarea"
+                            *ngFor="let content of release.content"
+                        >
+                            <div class="subtitle">
+                                {{
+                                    content.field_para_img_text_title ||
+                                        content.field_text_title
+                                }}
+                                <hr />
+                            </div>
+
+                            <div
+                                class="text"
+                                *ngIf="content.field_para_img_text_text"
+                            >
+                                <p
+                                    class="text-under-subtitle"
+                                    *ngFor="
+                                        let text of content.field_para_img_text_text
+                                    "
+                                    [innerHTML]="text"
+                                ></p>
+                            </div>
+                            <div class="text" *ngIf="content.field_text_body">
+                                <p
+                                    class="text-under-subtitle"
+                                    [innerHTML]="content.field_text_body"
+                                ></p>
+                            </div>
+
+                            <div
+                                class="subimagens row"
+                                *ngIf="content.para_img_text_img"
+                            >
+                                <div
+                                    class="col-md-6 pl-0"
+                                    *ngFor="
+                                        let image of content.para_img_text_img
+                                    "
+                                    data-toggle="modal"
+                                    [attr.data-target]="'#imageModal'"
+                                    data-slide-to="0"
+                                    (click)="
+                                        loadModalGallery(
+                                            image.field_releases_embed_gallery
+                                        )
+                                    "
+                                >
+                                    <img
+                                        class="img-fluid"
+                                        src="{{ url }}{{
+                                            image.field_releases_embed
+                                        }}"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-menu">
+                        <div class="links">
+                            <div
+                                [hidden]="!release.file_id"
+                                class="item"
+                                (click)="
+                                    addToCart(
+                                        'files',
+                                        release.file_id,
+                                        release.title,
+                                        'Release',
+                                        getReleaseFeaturedImage(release)
+                                    )
+                                "
+                                appGtmEvent
+                                gtm-category="releases:{{ release.title }}"
+                                gtm-action="releases"
+                                gtm-label="add meus arquivos:{{
+                                    release.title
+                                }}"
+                            >
+                                <img
+                                    [src]="
+                                        fileService.hasFileCart(release.file_id)
+                                            ? '../../../assets/img/added-cart.svg'
+                                            : '../../../assets/img/add-cart.svg'
+                                    "
+                                    class="img-fluid"
+                                />
+                                <div class="btn-text">Adicionar release</div>
+                            </div>
+
+                            <download-button
+                                [releaseId]="releaseId"
+                                [hidden]="!release.file_id"
+                                [label]="'Download release'"
+                                [id]="release.file_id"
+                                [origin]="'files'"
+                                [galleryId]="release.release_image_gallery_id"
+                                appGtmEvent
+                                gtm-category="releases:{{ release.title }}"
+                                gtm-action="releases"
+                                gtm-label="download:{{ release.title }}"
+                            >
+                            </download-button>
+
+                            <button
+                                class="item print"
+                                printSectionId="release-print"
+                                [printStyle]="{
+                                    img: {
+                                        width: '100%',
+                                        margin: 'auto'
+                                    },
+                                    h3: {
+                                        'font-weight': 'bold',
+                                        'font-size': '40px',
+                                        'line-height': '48px',
+                                        color: '#3D3D3E',
+                                        'margin-bottom': '30px'
+                                    }
+                                }"
+                                ngxPrint
+                                appGtmEvent
+                                gtm-category="releases:{{ release.title }}"
+                                gtm-action="lateral"
+                                gtm-label="imprimir:{{ release.title }}"
+                            >
+                                <div class="icon icon-print">
+                                    <i class="fas fa-print"></i>
+                                </div>
+                                <div class="btn-text">Imprimir release</div>
+                            </button>
+                        </div>
+
+                        <div class="share">
+                            <div class="title" (click)="toggleSocial()">
+                                Compartilhar
+
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <div class="buttons" *ngIf="displaySocial">
+                                <share-button
+                                    button="facebook"
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="releases"
+                                    gtm-label="compartilhar-facebook-{{
+                                        release.title
+                                    }}"
+                                ></share-button>
+                                <share-button
+                                    button="twitter"
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="releases"
+                                    gtm-label="compartilhar-twitter-{{
+                                        release.title
+                                    }}"
+                                ></share-button>
+                                <!-- <share-button button="whatsapp"></share-button> -->
+                                <share-button
+                                    button="linkedin"
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="releases"
+                                    gtm-label="compartilhar-linkedin-{{
+                                        release.title
+                                    }}"
+                                ></share-button>
+                                <!-- <share-button button="pinterest"></share-button> -->
+                                <share-button
+                                    button="email"
+                                    description="Confira este conteúdo da Sala de Imprensa Honda."
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="releases"
+                                    gtm-label="compartilhar-email-{{
+                                        release.title
+                                    }}"
+                                >
+                                </share-button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tags" *ngIf="release.tags.length != 0">
+                        <div class="indicator">Tags:</div>
+
+                        <div
+                            [routerLink]="['/busca/', tag]"
+                            class="tag"
+                            *ngFor="let tag of release.tags"
+                            appGtmEvent
+                            gtm-category="releases:{{ release.title }}"
+                            gtm-action="releases"
+                            gtm-label="tags:{{ tag }}"
+                        >
+                            {{ tag }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border-middle"></div>
+                <div class="col-md-3 right-bar">
+                    <div
+                        class="press-kit"
+                        *ngIf="
+                            release.datasheet_file_id ||
+                            release.colors_file_id ||
+                            release.release_image_gallery.length != 0 ||
+                            release.release_video_gallery.length != 0
+                        "
+                    >
+                        <img
+                            class="img-fluid"
+                            src="../../../assets/img/presskit.svg"
+                            alt=""
+                        />
+
+                        <div class="details">
+                            <div class="title">Press Kit</div>
+
+                            <!-- <div class="subtitle">
+                                Adicione e faça o download
+                            </div> -->
+                            <div
+                                class="btn-press"
+                                (click)="downloadPressKit()"
+                                appGtmEvent
+                                gtm-category="releases:{{ release.title }}"
+                                gtm-action="lateral"
+                                gtm-label="press-kit:{{ release.title }}"
+                            >
+                                <div class="icon">
+                                    <i class="far fa-folder-open dot-icon"></i>
+                                </div>
+                                <div class="btn-text">Download</div>
+                            </div>
+                            <a
+                                href="{{ zip }}"
+                                #linkZip
+                                id="link-zip-{{ zip }}"
+                                class="link-zip"
+                                download
+                                >{{ zip }}</a
+                            >
+                        </div>
+                    </div>
+
+                    <div
+                        class="documents row"
+                        *ngIf="
+                            release.datasheet_file_id || release.colors_file_id
+                        "
+                    >
+                        <div class="col-12">
+                            <div class="title">Documentos</div>
+                        </div>
+
+                        <div
+                            class="col-md-12 col-6"
+                            *ngIf="release.datasheet_file_id"
+                        >
+                            <div class="document">
+                                <div class="name">Ficha Técnica</div>
+                                <div class="model">
+                                    {{
+                                        release.datasheet_desc || release.title
+                                    }}
+                                </div>
+                                <div
+                                    class="add"
+                                    (click)="
+                                        addToCart(
+                                            'files',
+                                            release.datasheet_file_id,
+                                            release.title,
+                                            'Ficha técnica',
+                                            getReleaseFeaturedImage(release)
+                                        )
+                                    "
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="lateral"
+                                    gtm-label="1-add meus arquivos:{{
+                                        release.title
+                                    }}"
+                                >
+                                    <div class="icon">
+                                        <img
+                                            [src]="
+                                                fileService.hasFileCart(
+                                                    release.datasheet_file_id
+                                                )
+                                                    ? '../../../assets/img/added-cart.svg'
+                                                    : '../../../assets/img/add-cart.svg'
+                                            "
+                                            class="img-fluid"
+                                        />
+                                    </div>
+                                    <div class="btn-add">Adicionar</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="col-md-12 col-6"
+                            *ngIf="release.colors_file_id"
+                        >
+                            <div class="document">
+                                <div class="name">Tabela de Cores</div>
+                                <div class="model">
+                                    {{ release.colors_desc || release.title }}
+                                </div>
+                                <div
+                                    class="add"
+                                    (click)="
+                                        addToCart(
+                                            'files',
+                                            release.colors_file_id,
+                                            release.title,
+                                            'Tabela de cores',
+                                            getReleaseFeaturedImage(release)
+                                        )
+                                    "
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="lateral"
+                                    gtm-label="2-add meus arquivos:{{
+                                        release.title
+                                    }}"
+                                >
+                                    <div class="icon">
+                                        <img
+                                            [src]="
+                                                fileService.hasFileCart(
+                                                    release.colors_file_id
+                                                )
+                                                    ? '../../../assets/img/added-cart.svg'
+                                                    : '../../../assets/img/add-cart.svg'
+                                            "
+                                            class="img-fluid"
+                                        />
+                                    </div>
+                                    <div class="btn-add">Adicionar</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="gallery"
+                        *ngIf="release.release_image_gallery.length != 0"
+                    >
+                        <div class="header-gallery">
+                            <div class="title">Fotos</div>
+
+                            <div
+                                class="add"
+                                (click)="
+                                    addToCart(
+                                        'galleries',
+                                        release.release_image_gallery_id,
+                                        release.title,
+                                        'Galeria de Imagem',
+                                        release.release_image_gallery[0]
+                                            ?.image_preview
+                                    )
+                                "
+                                appGtmEvent
+                                gtm-category="releases:{{ release.title }}"
+                                gtm-action="lateral"
+                                gtm-label="2-add meus arquivos:{{
+                                    release.title
+                                }}"
+                            >
+                                <div class="icon">
+                                    <img
+                                        [src]="
+                                            fileService.hasFileCart(
+                                                release.release_image_gallery_id
+                                            )
+                                                ? '../../../assets/img/added-cart.svg'
+                                                : '../../../assets/img/add-cart.svg'
+                                        "
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <div class="btn-add">Adicionar galeria</div>
+                            </div>
+
+                            <div class="counter">
+                                <span>{{ numberPhoto }}</span
+                                >/{{ release.release_image_gallery.length }}
+                            </div>
+                            <hr />
+                        </div>
+
+                        <div class="row">
+                            <div
+                                class="col-md-6"
+                                *ngFor="
+                                    let image of release.release_image_gallery;
+                                    let i = index
+                                "
+                            >
+                                <div class="itens" *ngIf="i < 4">
+                                    <div
+                                        data-toggle="modal"
+                                        class="img-thumb"
+                                        [attr.data-target]="'#imageModal'"
+                                        data-slide-to="0"
+                                        (click)="
+                                            loadModalGallery(image.item_id)
+                                        "
+                                    >
+                                        <img
+                                            class="img-fluid"
+                                            src="{{ url }}{{
+                                                image.image_preview
+                                            }}"
+                                            alt=""
+                                        />
+                                    </div>
+
+                                    <button
+                                        class="pl-0 add buttons"
+                                        (click)="
+                                            addToCart(
+                                                'files',
+                                                image.item_id,
+                                                release.title,
+                                                'Imagem',
+                                                image.image_preview,
+                                                image.gallery_id
+                                            )
+                                        "
+                                    >
+                                        <img
+                                            [src]="
+                                                fileService.hasFileCart(
+                                                    image.item_id
+                                                )
+                                                    ? '../../../assets/img/added-cart.svg'
+                                                    : '../../../assets/img/add-cart.svg'
+                                            "
+                                            class="img-fluid"
+                                        />
+                                        <div class="btn-add">Adicionar</div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <ngb-carousel
+                                (slide)="
+                                    changeNumberPhoto(
+                                        'next',
+                                        numberPhoto,
+                                        release.release_image_gallery.length
+                                    )
+                                "
+                                class="w-100 carousel slide carousel-fade"
+                                data-ride="carousel"
+                                id="carouselGalleryPic"
+                                #carousel
+                                [showNavigationArrows]="false"
+                                [showNavigationIndicators]="false"
+                                [keyboard]="false"
+                            >
+                                <ng-template
+                                    ngbSlide
+                                    *ngFor="
+                                        let image of release.release_image_gallery;
+                                        let idx = index
+                                    "
+                                >
+                                    <div class="picsum-img-wrapper">
+                                        <div
+                                            data-toggle="modal"
+                                            [attr.data-target]="'#imageModal'"
+                                            data-slide-to="0"
+                                            class="video"
+                                            (click)="
+                                                loadModalGallery(image.item_id)
+                                            "
+                                        >
+                                            <img
+                                                class="d-block w-100"
+                                                src="{{ url }}{{
+                                                    image.image_preview
+                                                }}"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="banner-content">
+                                        <download-button
+                                            [id]="image.item_id"
+                                            [origin]="'files'"
+                                        ></download-button>
+                                        <div
+                                            class="add buttons"
+                                            (click)="
+                                                addToCart(
+                                                    'files',
+                                                    image.item_id,
+                                                    release.title,
+                                                    'Imagem',
+                                                    image.image_preview,
+                                                    image.gallery_id
+                                                )
+                                            "
+                                        >
+                                            <img
+                                                [src]="
+                                                    fileService.hasFileCart(
+                                                        image.item_id
+                                                    )
+                                                        ? '../../../assets/img/added-cart.svg'
+                                                        : '../../../assets/img/add-cart.svg'
+                                                "
+                                                class="img-fluid"
+                                            />
+                                        </div>
+                                        <div
+                                            class="add buttons"
+                                            (click)="
+                                                addToCart(
+                                                    'galleries',
+                                                    release.release_image_gallery_id,
+                                                    release.title,
+                                                    'Galeria de imagem',
+                                                    release
+                                                        .release_image_gallery[0]
+                                                        ?.image_preview
+                                                )
+                                            "
+                                        >
+                                            <img
+                                                [src]="
+                                                    fileService.hasFileCart(
+                                                        release.release_image_gallery_id
+                                                    )
+                                                        ? '../../../assets/img/added-cart.svg'
+                                                        : '../../../assets/img/add-cart.svg'
+                                                "
+                                                class="img-fluid"
+                                            />
+                                            <div class="btn-add">
+                                                Adicionar toda a galeria
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a
+                                        class="carousel-control-prev"
+                                        href="#carouselGalleryPic"
+                                        role="button"
+                                        data-slide="prev"
+                                        (click)="
+                                            changeNumberPhoto(
+                                                'prev',
+                                                numberPhoto,
+                                                release.release_image_gallery
+                                                    .length
+                                            )
+                                        "
+                                    >
+                                        <img
+                                            src="assets/img/internal-arrow-left.svg"
+                                            alt=""
+                                        />
+                                    </a>
+                                    <a
+                                        class="carousel-control-next"
+                                        href="#carouselGalleryPic"
+                                        role="button"
+                                        data-slide="next"
+                                        (click)="
+                                            changeNumberPhoto(
+                                                'next',
+                                                numberPhoto,
+                                                release.release_image_gallery
+                                                    .length
+                                            )
+                                        "
+                                    >
+                                        <img
+                                            src="assets/img/internal-arrow-right.svg"
+                                            alt=""
+                                        />
+                                    </a>
+                                </ng-template>
+                            </ngb-carousel>
+                        </div>
+
+                        <div 
+                            *ngIf="release.release_image_gallery.length != 0"
+                            (click)="
+                                loadModalGallery(
+                                    release_image_gallery.shift().item_id
+                                )
+                            "              
+                            data-toggle="modal"
+                            [attr.data-target]="'#imageModal'"
+                            data-slide-to="0"       
+                            appGtmEvent
+                            gtm-category="releases:{{ release.title }}"
+                            gtm-action="lateral"
+                            gtm-label="ver todas as imagens"                                             
+                            title="Ver todas as imagens"
+                            class="see-more"
+                            href="javascript:void(0)">
+                            Ver todas as imagens
+                        </div>
+                    </div>
+
+                    <div
+                        class="gallery"
+                        *ngIf="release.release_video_gallery.length != 0"
+                    >
+                        <div class="header-gallery">
+                            <div class="title">Vídeos</div>
+
+                            <div
+                                class="add"
+                                *ngIf="
+                                    release.release_video_gallery[0]
+                                        ?.video_large_id
+                                "
+                                (click)="
+                                    addToCart(
+                                        'galleries',
+                                        release.release_video_gallery_id,
+                                        release.title,
+                                        'Galeria de vídeo',
+                                        release.release_video_gallery[0]
+                                            ?.image_preview
+                                    )
+                                "
+                            >
+                                <div class="icon">
+                                    <img
+                                        [src]="
+                                            fileService.hasFileCart(
+                                                release.release_video_gallery_id
+                                            )
+                                                ? '../../../assets/img/added-cart.svg'
+                                                : '../../../assets/img/add-cart.svg'
+                                        "
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <div class="btn-add">Adicionar galeria</div>
+                            </div>
+
+                            <div class="counter">
+                                <span>{{ numberVideo }}</span
+                                >/{{ release.release_video_gallery.length }}
+                            </div>
+                            <hr />
+                        </div>
+
+                        <div
+                            class="itens"
+                            *ngFor="
+                                let video of release.release_video_gallery;
+                                let idx = index
+                            "
+                        >
+                            <div
+                                data-toggle="modal"
+                                class="video img-thumb"
+                                [attr.data-target]="
+                                    '#imageModal' + video.item_id
+                                "
+                                data-slide-to="0"
+                                (click)="loadVideoModalGallery(video)"
+                            >
+                                <img
+                                    class="thumb"
+                                    src="{{ url }}{{ video.image_preview }}"
+                                    alt=""
+                                />
+                                <img
+                                    class="icon-play"
+                                    src="../../../assets/img/icon_play.png"
+                                />
+                            </div>
+
+                            <div class="name">{{ video.title }}</div>
+
+                            <div
+                                class="add buttons"
+                                *ngIf="video.video_large_id"
+                                (click)="
+                                    addToCart(
+                                        'files',
+                                        video.video_large_id,
+                                        release.title,
+                                        'Vídeo',
+                                        video.image_preview,
+                                        video.gallery_id
+                                    )
+                                "
+                            >
+                                <div class="icon">
+                                    <img
+                                        [src]="
+                                            fileService.hasFileCart(
+                                                video.video_large_id
+                                            )
+                                                ? '../../../assets/img/added-cart.svg'
+                                                : '../../../assets/img/add-cart.svg'
+                                        "
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <div class="btn-add">Adicionar</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div
+                                id="carouselGalleryPic2"
+                                class="w-100 carousel slide carousel-fade"
+                                data-ride="carousel"
+                            >
+                                <div class="carousel-inner carousel-video">
+                                    <div
+                                        class="carousel-item {{
+                                            idx == 0 ? 'active' : ''
+                                        }}"
+                                        *ngFor="
+                                            let video of release.release_video_gallery;
+                                            let idx = index
+                                        "
+                                    >
+                                        <div
+                                            class="video"
+                                            data-toggle="modal"
+                                            [attr.data-target]="
+                                                '#imageModal' + video.item_id
+                                            "
+                                            data-slide-to="0"
+                                            (click)="
+                                                loadVideoModalGallery(video)
+                                            "
+                                        >
+                                            <img
+                                                class="thumb"
+                                                src="{{ url }}{{
+                                                    video.image_preview
+                                                }}"
+                                                alt=""
+                                            />
+                                            <img
+                                                class="icon-play"
+                                                src="../../../assets/img/icon_play.png"
+                                            />
+                                        </div>
+                                        <div
+                                            class="banner-content"
+                                            *ngIf="video.video_large_id"
+                                        >
+                                            <download-button
+                                                [id]="video.video_large_id"
+                                                [origin]="'files'"
+                                            ></download-button>
+                                            <div
+                                                class="add buttons"
+                                                (click)="
+                                                    addToCart(
+                                                        'files',
+                                                        video.video_large_id,
+                                                        release.title,
+                                                        'Vídeo',
+                                                        video.image_preview,
+                                                        video.gallery_id
+                                                    )
+                                                "
+                                            >
+                                                <img
+                                                    [src]="
+                                                        fileService.hasFileCart(
+                                                            video.video_large_id
+                                                        )
+                                                            ? '../../../assets/img/added-cart.svg'
+                                                            : '../../../assets/img/add-cart.svg'
+                                                    "
+                                                    class="img-fluid"
+                                                />
+                                            </div>
+                                            <div
+                                                class="add buttons"
+                                                (click)="
+                                                    addToCart(
+                                                        'galleries',
+                                                        release.release_video_gallery_id,
+                                                        release.title,
+                                                        'Galeria de vídeo',
+                                                        release
+                                                            .release_video_gallery[0]
+                                                            ?.image_preview
+                                                    )
+                                                "
+                                            >
+                                                <img
+                                                    [src]="
+                                                        fileService.hasFileCart(
+                                                            release.release_video_gallery_id
+                                                        )
+                                                            ? '../../../assets/img/added-cart.svg'
+                                                            : '../../../assets/img/add-cart.svg'
+                                                    "
+                                                    class="img-fluid"
+                                                />
+                                                <div class="btn-add">
+                                                    Adicionar toda a galeria
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a
+                                    class="carousel-control-prev"
+                                    href="#carouselGalleryPic2"
+                                    role="button"
+                                    data-slide="prev"
+                                    (click)="
+                                        changeNumberVideo(
+                                            'prev',
+                                            numberVideo,
+                                            release.release_video_gallery.length
+                                        )
+                                    "
+                                >
+                                    <img
+                                        src="assets/img/internal-arrow-left.svg"
+                                        alt=""
+                                    />
+                                </a>
+                                <a
+                                    class="carousel-control-next"
+                                    href="#carouselGalleryPic2"
+                                    role="button"
+                                    data-slide="next"
+                                    (click)="
+                                        changeNumberVideo(
+                                            'next',
+                                            numberVideo,
+                                            release.release_video_gallery.length
+                                        )
+                                    "
+                                >
+                                    <img
+                                        src="assets/img/internal-arrow-right.svg"
+                                        alt=""
+                                    />
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="see-more"
+                            data-toggle="modal"
+                            [attr.data-target]="
+                                '#imageModal' +
+                                release.release_video_gallery[0]?.item_id
+                            "
+                            data-slide-to="0"
+                            (click)="
+                                loadVideoModalGallery(
+                                    release.release_video_gallery[0]
+                                )
+                            "
+                        >
+                            Ver todos os vídeos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+
+        <div
+            class="more-contents row"
+            *ngIf="release.related_content.length != 0"
+        >
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <h2 class="subtitle">Veja também os releases relacionados</h2>
+
+                <div class="row desktop-list">
+                    <div
+                        class="col-lg-6"
+                        *ngFor="let release of release.related_content"
+                    >
+                        <div class="box">
+                            <a
+                                [routerLink]="release.content_url"
+                                *ngIf="release.field_release_gallery_image"
+                                appGtmEvent
+                                gtm-category="releases:{{ release.title }}"
+                                gtm-action="materias relacionadas"
+                                gtm-label="clique:{{ release.title }}"
+                            >
+                                <div class="image">
+                                    <img
+                                        src="{{ url }}{{
+                                            release.field_release_gallery_image
+                                        }}"
+                                        class="img-fluid"
+                                        alt="{{ release.title }}"
+                                    />
+                                </div>
+                            </a>
+                            <a
+                                [routerLink]="release.content_url"
+                                class="image"
+                                *ngIf="!release.field_release_gallery_image"
+                                appGtmEvent
+                                gtm-category="releases:{{ release.title }}"
+                                gtm-action="materias relacionadas"
+                                gtm-label="clique:{{ release.title }}"
+                            >
+                                <img
+                                    src="../../../assets/img/honda_logo_thumb.png"
+                                    class="img-fluid"
+                                />
+                            </a>
+                            <div class="info">
+                                <a
+                                    class="subtitle"
+                                    [routerLink]="release.content_url"
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="materias relacionadas"
+                                    gtm-label="clique:{{ release.title }}"
+                                >
+                                    <div class="date">
+                                        {{ release.created_at }}
+                                    </div>
+                                    |
+                                    <div class="category">
+                                        {{ release.segment_title }}
+                                    </div>
+                                </a>
+                                <a
+                                    [routerLink]="release.content_url"
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="materias relacionadas"
+                                    gtm-label="clique:{{ release.title }}"
+                                    class="title"
+                                >
+                                    {{ release.title }}
+                                </a>
+                                <a
+                                    [routerLink]="release.content_url"
+                                    appGtmEvent
+                                    gtm-category="releases:{{ release.title }}"
+                                    gtm-action="materias relacionadas"
+                                    gtm-label="clique:{{ release.title }}"
+                                    class="text"
+                                    [innerHTML]="release.body"
+                                ></a>
+                                <div class="actions">
+                                    <download-button
+                                        [id]="release.file_id"
+                                        [origin]="'files'"
+                                        appGtmEvent
+                                        gtm-category="releases:{{
+                                            release.title
+                                        }}"
+                                        gtm-action="materias relacionadas"
+                                        gtm-label="download:{{ release.title }}"
+                                    ></download-button>
+                                    <div
+                                        class="add-cart"
+                                        (click)="
+                                            addToCart(
+                                                'files',
+                                                release.file_id,
+                                                release.title,
+                                                'Release',
+                                                getReleaseFeaturedImage(release)
+                                            )
+                                        "
+                                        appGtmEvent
+                                        gtm-category="releases:{{
+                                            release.title
+                                        }}"
+                                        gtm-action="materias relacionadas"
+                                        gtm-label="add meus arquivos:{{
+                                            release.title
+                                        }}"
+                                    >
+                                        <img
+                                            [src]="
+                                                fileService.hasFileCart(
+                                                    release.file_id
+                                                )
+                                                    ? '../../../assets/img/added-cart.svg'
+                                                    : '../../../assets/img/add-cart.svg'
+                                            "
+                                            class="img-fluid"
+                                        />
+                                    </div>
+                                    <div
+                                        class="see-details"
+                                        [routerLink]="release.content_url"
+                                        appGtmEvent
+                                        gtm-category="releases:{{
+                                            release.title
+                                        }}"
+                                        gtm-action="materias relacionadas"
+                                        gtm-label="ver mais:{{ release.title }}"
+                                    >
+                                        <span>Veja Mais</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="mobile-wrapper">
+                <ngx-slick-carousel
+                    class="carousel"
+                    #slickModal="slick-carousel"
+                    [config]="slideConfigRelease"
+                >
+                    <div
+                        ngxSlickItem
+                        *ngFor="let release of release.related_content"
+                        class="slide"
+                    >
+                        <div
+                            class="box d-flex flex-column align-items-center justify-content-center"
+                        >
+                            <div
+                                class="image"
+                                [routerLink]="release.content_url"
+                            >
+                                <img
+                                    *ngIf="release.field_release_gallery_image"
+                                    src="{{ url }}{{
+                                        release.field_release_gallery_image
+                                    }}"
+                                    class="img-fluid"
+                                    loading="lazy"
+                                    alt="{{ release.title }}"
+                                />
+                                <img
+                                    *ngIf="!release.field_release_gallery_image"
+                                    src="../../../assets/img/honda_logo_thumb.png"
+                                    class="img-fluid"
+                                    loading="lazy"
+                                    alt="{{ release.title }}"
+                                />
+                            </div>
+                            <div class="info">
+                                <div
+                                    class="subtitle"
+                                    [routerLink]="release.content_url"
+                                >
+                                    <div class="date">
+                                        {{ release.created_at }}
+                                    </div>
+                                    <div class="category">
+                                        {{ release.segment_title }}
+                                    </div>
+                                </div>
+                                <div
+                                    class="title"
+                                    [routerLink]="release.content_url"
+                                >
+                                    {{ release.title }}
+                                </div>
+                                <div
+                                    class="text"
+                                    [innerHTML]="release.body"
+                                    [routerLink]="release.content_url"
+                                >
+                                    <a [routerLink]="release.content_url"></a>
+                                </div>
+                                <div class="actions">
+                                    <download-button
+                                        [hidden]="!release.file_id"
+                                        [id]="release.file_id"
+                                        [origin]="'files'"
+                                    ></download-button>
+                                    <div
+                                        [hidden]="!release.file_id"
+                                        class="add-cart"
+                                        (click)="
+                                            addToCart(
+                                                'files',
+                                                release.file_id,
+                                                release.title,
+                                                'Release',
+                                                getReleaseFeaturedImage(release)
+                                            )
+                                        "
+                                    >
+                                        <img
+                                            [src]="
+                                                fileService.hasFileCart(
+                                                    release.file_id
+                                                )
+                                                    ? '../../../assets/img/added-cart.svg'
+                                                    : '../../../assets/img/add-cart.svg'
+                                            "
+                                            class="img-fluid"
+                                            alt="adicionar ao carrinho"
+                                        />
+                                    </div>
+                                    <a
+                                        class="see-details"
+                                        [routerLink]="release.content_url"
+                                    >
+                                        <span> Veja Mais </span></a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+        </div>
+
+        <div *ngFor="let image of release.release_image_gallery; let i = index">
+            <app-modal-gallery-release
+                *ngIf="open == image.item_id"
+                [galleryArray]="release.release_image_gallery"
+                [title]="release.title"
+                [imageId]="image.item_id"
+                [initialIndex]="i"
+            ></app-modal-gallery-release>
+        </div>
+
+        <div *ngFor="let video of release.release_video_gallery; let i = index">
+            <app-modal-gallery
+                *ngIf="selectedVideo?.item_id == video.item_id"
+                [id]="selectedVideo.gallery_id"
+                [title]="selectedVideo.title"
+                [thumb]="selectedVideo.image_preview"
+                [imageId]="selectedVideo.item_id"
+                [initialIndex]="i"
+                [video]="true"
+            >
+            </app-modal-gallery>
+        </div>
+    </div>
+</div>

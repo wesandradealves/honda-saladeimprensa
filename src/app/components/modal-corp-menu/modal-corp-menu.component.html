@@ -1,0 +1,39 @@
+<div class="modal" id="corpMenu" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document" data-dismiss="modal">
+        <div class="modal-content modal-dialog-centered">
+            <div class="container">
+                <div class="submenu" *ngFor="let page of pages">
+                    <div class="submenu-row mt-0">
+                        <div class="title py-4">
+                            <strong
+                                >Selecione o conteúdo corporativo que
+                                deseja:</strong
+                            >
+                        </div>
+                        <div *ngFor="let pagebelow of page['below']">
+                            <div *ngFor="let subtitle of pagebelow.below">
+                                <a
+                                    [routerLink]="'/' + subtitle.alias"
+                                    routerLinkActive="active"
+                                    appGtmEvent
+                                    gtm-category="home"
+                                    gtm-action="conteudo"
+                                    gtm-label="Corporativo - {{
+                                        subtitle.title
+                                    }}"
+                                >
+                                    <div class="item py-4">
+                                        {{ subtitle.title }}
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="close-menu text-center">
+                            <button type="button">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

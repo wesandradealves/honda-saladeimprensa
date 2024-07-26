@@ -1,0 +1,100 @@
+.social-medias {
+    padding-top: 47px;
+    padding-bottom: 30px;
+
+    .img-fluid {
+        @media(max-width: 992px) {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+
+    .section-title {
+        font-size: 40px;
+        font-weight: bold;
+        color: #3D3D3E;
+        margin-bottom: 50px;
+        text-align: center;
+
+        line-height: 1.15em;
+        margin-top: 2rem;
+    }
+
+    .hold-social {
+        width: 100%;
+        height: 370px;
+
+        img {
+            height: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        @media(max-width: 992px) {
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+    }
+
+    .name-block {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        bottom: 25px;
+        @media(min-width: 992px) {
+            bottom: 21px;
+        }
+        left: 35px;
+
+        &.facebook {
+            .label{
+                background-color: #3b5998;
+            }
+
+            .name {
+                background-color: #3b5998;
+            }
+        }
+
+        &.linkedin {
+            .label{
+                background-color: #0077b5;
+            }
+
+            .name {
+                background-color: #0077b5;
+            }
+        }
+
+        .label {
+            width: 60px;
+            height: 60px;
+            color: #ffffff;
+            background: #CD2B14;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+        }
+
+        .name {
+            width: 97px;
+            height: 33px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            background: #CD2B14;
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-left: -8px;
+        }
+    }
+}

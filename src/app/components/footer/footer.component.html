@@ -1,0 +1,43 @@
+<footer>
+    <section class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div
+                    class="footer-menu  col-12 col-lg-3 d-flex flex-row align-items-center justify-content-center justify-content-lg-start px-0">
+                    <button class="btn-newsroom py-3" type="button" data-toggle="collapse" data-target=".toggle-menu"
+                        aria-expanded="false" arias-haspopup="true">
+                        <img class="img-fluid mr-2" src="../../../assets/img/icon_arrow_white.png" alt="Arrow Button">
+                        Sala de Imprensa
+                    </button>
+                </div>
+                <div class="collapse d-lg-none toggle-menu"  >
+                    <footer-menu ></footer-menu>
+                </div>
+                <div class="social col-12 col-lg-9">
+                    <footer-socials></footer-socials>
+                </div>
+            </div>
+        </div>
+        <div class="collapse toggle-menu lg-device" >
+            <footer-menu ></footer-menu>
+        </div>
+    </section>
+    <section class="copyright">
+        <div class="wrapper d-flex align-items-center justify-content-between flex-wrap flex-column flex-md-row">
+            <div class="info">
+                <img src="../../../assets/img/Layer 1.png" alt="Ibama" loading="lazy" width="44" height="50">
+                <span class="text-span" *ngIf="settings.text">{{settings.text}}</span>
+            </div>
+            <div 
+            class="legal d-flex flex-column flex-lg-row align-items-center justify-content-lg-end">
+                <span *ngIf="settings.copyright">{{settings.copyright}}</span>
+            
+                <ul *ngIf="navigation" class="d-flex align-items-center justify-content-center justify-content-md-start navigation m-0">
+                    <li *ngFor="let item of navigation">
+                        <a [href]="item.link__uri">{{item.title}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</footer>

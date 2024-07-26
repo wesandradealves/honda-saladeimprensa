@@ -1,0 +1,74 @@
+<ng-container *ngIf="id">
+    <app-product-banner [corporative]="id"></app-product-banner>
+    <app-breadcrumb
+        [nameParent]="'Corporativo'"
+        [nameChildren]="name"
+        [type]="'container'"
+    ></app-breadcrumb>
+    <div class="page-honda-south-america" *ngIf="extras.length > 0">
+        <div class="cards">
+            <div class="card" *ngFor="let extra of extras">
+                <h3 class="title">{{ extra.title }}</h3>
+                <div class="image desktop">
+                    <a target="_blank" [routerLink]="extra.link_url">
+                        <img
+                            class="img-fluid"
+                            src="{{ url }}{{ extra.image }}"
+                            alt="Imagem Ilustrativa"
+                        />
+                    </a>
+                </div>
+
+                <div class="image mobile">
+                    <a target="_blank" [routerLink]="extra.link_url">
+                        <img
+                            class="img-fluid"
+                            src="{{ url }}{{ extra.image }}"
+                            alt="Imagem Ilustrativa"
+                        />
+                    </a>
+                </div>
+                <div class="caption">
+                    <a target="_blank" [routerLink]="extra.link_url">
+                        <div class="description" [innerHTML]="extra.body"></div>
+                    </a>
+                    <a
+                        *ngIf="extra.link_url"
+                        target="_blank"
+                        [routerLink]="extra.link_url"
+                        routerLinkActive="router-link-active"
+                    >
+                        <button
+                            title="Acesse {{ extra.title }}"
+                            class="see-more"
+                        >
+                            {{ extra.link_text }}
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-product-releases
+        [parentId]="id"
+        [corporative]="true"
+    ></app-product-releases>
+    <app-product-gallery-inside
+        [typeGalery]="'imagem'"
+        [parentId]="id"
+        [category]="'corporativo'"
+        [corporative]="true"
+    ></app-product-gallery-inside>
+    <app-product-gallery-inside
+        [typeGalery]="'video'"
+        [parentId]="id"
+        [category]="'corporativo'"
+        [corporative]="true"
+    ></app-product-gallery-inside>
+    <div class="gradient-bg">
+        <app-product-related-content
+            [parentName]="id"
+            [corporative]="true"
+        ></app-product-related-content>
+    </div>
+</ng-container>

@@ -1,0 +1,16 @@
+<button>
+    <div class="position-relative d-inline-block mr-1 mr-sm-3">
+        <img
+            class="img-fluid"
+            src="assets/img/icon_folder.png"
+            alt="adicionar ao carrinho"
+        />
+        <span class="files-counter" [class.added]="alreadyInCart">
+            <i *ngIf="alreadyInCart" class="fas fa-check"></i>
+            <span *ngIf="!alreadyInCart">+</span>
+        </span>
+    </div>
+    <span class="text">
+        <ng-content></ng-content>
+    </span>
+</button>

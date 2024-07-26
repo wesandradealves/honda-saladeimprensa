@@ -1,0 +1,6 @@
+<honda-header></honda-header>
+<div [@opacityInOut]="prepareAnimation(outlet)">
+    <router-outlet #outlet="outlet" (activate)="onActivate($event)"></router-outlet>
+</div>
+<info-notification></info-notification>
+<honda-footer></honda-footer>

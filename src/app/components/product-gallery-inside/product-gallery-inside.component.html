@@ -1,0 +1,346 @@
+<div class="product-gallery container pt-5" *ngIf="galleries.length > 0">
+    <div class="releases row">
+        <div class="header-gallery">
+            <div class="title">
+                Galerias de
+                <span>{{ getMediaTypeDesc(galleries.length) }}</span>
+            </div>
+            <hr />
+        </div>
+        <div class="wrapper">
+            <div class="releases-list d-flex flex-wrap">
+                <!--Mobile-Slider-->
+                <div class="mobile-wrapper">
+                    <ngx-slick-carousel
+                        class="carousel"
+                        #slickModal="slick-carousel"
+                        [config]="slideConfig"
+                    >
+                        <div
+                            ngxSlickItem
+                            *ngFor="
+                                let gallery of galleries | slice: 0:10;
+                                index as i
+                            "
+                            class="slide"
+                        >
+                            <div
+                                class="box d-flex flex-column align-items-center justify-content-center"
+                            >
+                                <div
+                                    (click)="loadModalGallery(gallery.nid)"
+                                    data-toggle="modal"
+                                    [attr.data-target]="
+                                        '#imageModal' +
+                                        (gallery.image_id || gallery.nid)
+                                    "
+                                    class="image"
+                                    *ngIf="typeGalery == 'imagem'"
+                                >
+                                    <img
+                                        *ngIf="gallery.image_preview"
+                                        [lazyLoad]="url + gallery.image_preview"
+                                        class="img-fluid"
+                                    />
+                                    <img
+                                        *ngIf="!gallery.image_preview"
+                                        src="../../../assets/img/honda_logo_thumb.png"
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <div
+                                    (click)="loadModalGallery(gallery.nid)"
+                                    data-toggle="modal"
+                                    [attr.data-target]="
+                                        '#imageModal' +
+                                        (gallery.image_id || gallery.nid)
+                                    "
+                                    class="image"
+                                    *ngIf="typeGalery == 'video'"
+                                >
+                                    <img
+                                        *ngIf="gallery.image_preview"
+                                        [lazyLoad]="url + gallery.image_preview"
+                                        class="img-fluid thumb"
+                                    />
+                                    <img
+                                        *ngIf="!gallery.image_preview"
+                                        src="../../../assets/img/honda_logo_thumb.png"
+                                        class="img-fluid thumb"
+                                    />
+                                    <img
+                                        class="icon-play"
+                                        src="../../../assets/img/icon_play.png"
+                                    />
+                                </div>
+                                <div class="info">
+                                    <div class="title">{{ gallery.title }}</div>
+                                    <div class="text">
+                                        {{ gallery.count_items }}
+                                        {{
+                                            getMediaTypeDesc(
+                                                gallery.count_items
+                                            )
+                                        }}
+                                    </div>
+                                    <div class="actions">
+                                        <download-button
+                                            [isGallery]="true"
+                                            [hidden]="isHidden(gallery)"
+                                            [id]="gallery.nid"
+                                            [isImage]="true"
+                                            [origin]="'galleries'"
+                                        ></download-button>
+                                        <div
+                                            [hidden]="isHidden(gallery)"
+                                            class="add-cart"
+                                            (click)="
+                                                addToCart(
+                                                    gallery.nid,
+                                                    gallery.title,
+                                                    gallery.image_preview
+                                                )
+                                            "
+                                        >
+                                            <img
+                                                [src]="
+                                                    fileService.hasFileCart(
+                                                        gallery.nid
+                                                    )
+                                                        ? '../../../assets/img/added-cart.svg'
+                                                        : '../../../assets/img/add-cart.svg'
+                                                "
+                                                class="img-fluid"
+                                            />
+                                        </div>
+                                        <a
+                                            class="see-details"
+                                            (click)="
+                                                loadModalGallery(gallery.nid)
+                                            "
+                                            data-toggle="modal"
+                                            [attr.data-target]="
+                                                '#imageModal' +
+                                                (gallery.image_id ||
+                                                    gallery.nid)
+                                            "
+                                        >
+                                            <span> {{ seeMore }} </span></a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ngx-slick-carousel>
+                </div>
+                <!--Desktop-List-->
+                <div
+                    class="desktop-wrapper col-12 col-lg-6"
+                    *ngFor="let gallery of galleries | slice: 0:10; index as i"
+                >
+                    <div
+                        class="box d-flex flex-row"
+                        *ngIf="typeGalery == 'imagem'"
+                    >
+                        <div
+                            class="image"
+                            data-toggle="modal"
+                            [attr.data-target]="
+                                '#imageModal' + gallery.image_id
+                            "
+                            (click)="loadModalGallery(gallery.nid)"
+                        >
+                            <img
+                                *ngIf="gallery.image_preview"
+                                [lazyLoad]="url + gallery.image_preview"
+                                class="img-fluid"
+                            />
+                            <img
+                                *ngIf="!gallery.image_preview"
+                                src="../../../assets/img/honda_logo_thumb.png"
+                                class="img-fluid"
+                            />
+                        </div>
+                        <div class="info">
+                            <div
+                                class="title"
+                                data-toggle="modal"
+                                [attr.data-target]="
+                                    '#imageModal' + gallery.image_id
+                                "
+                                (click)="loadModalGallery(gallery.nid)"
+                            >
+                                {{ gallery.title }}
+                            </div>
+                            <div
+                                class="text"
+                                data-toggle="modal"
+                                [attr.data-target]="
+                                    '#imageModal' + gallery.image_id
+                                "
+                                (click)="loadModalGallery(gallery.nid)"
+                            >
+                                {{ gallery.count_items }}
+                                {{ getMediaTypeDesc(gallery.count_items) }}
+                            </div>
+                            <div class="actions">
+                                <download-button
+                                    [isGallery]="true"
+                                    [id]="gallery.nid"
+                                    [isImage]="true"
+                                    [origin]="'galleries'"
+                                ></download-button>
+                                <div
+                                    class="add-cart"
+                                    (click)="
+                                        addToCart(
+                                            gallery.nid,
+                                            gallery.title,
+                                            gallery.image_preview
+                                        )
+                                    "
+                                >
+                                    <img
+                                        [src]="
+                                            fileService.hasFileCart(gallery.nid)
+                                                ? '../../../assets/img/added-cart.svg'
+                                                : '../../../assets/img/add-cart.svg'
+                                        "
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <a
+                                    class="see-details"
+                                    data-toggle="modal"
+                                    [attr.data-target]="
+                                        '#imageModal' + gallery.image_id
+                                    "
+                                    (click)="loadModalGallery(gallery.nid)"
+                                >
+                                    <span> {{ seeMore }} </span></a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="box d-flex flex-row"
+                        *ngIf="typeGalery == 'video'"
+                    >
+                        <div
+                            data-toggle="modal"
+                            [attr.data-target]="'#imageModal' + gallery.nid"
+                            (click)="loadModalGallery(gallery.nid)"
+                            class="image"
+                            *ngIf="typeGalery == 'video'"
+                        >
+                            <img
+                                *ngIf="gallery.image_preview"
+                                src="{{ url }}{{ gallery.image_preview }}"
+                                class="img-fluid thumb"
+                            />
+                            <img
+                                *ngIf="gallery.image_thumbnail"
+                                src="{{ url }}{{ gallery.image_thumbnail }}"
+                                class="img-fluid thumb"
+                            />
+                            <img
+                                *ngIf="!gallery.image_preview"
+                                src="../../../assets/img/honda_logo_thumb.png"
+                                class="img-fluid thumb"
+                            />
+                            <img
+                                class="icon-play"
+                                src="../../../assets/img/icon_play.png"
+                            />
+                        </div>
+                        <div class="info">
+                            <div
+                                class="title"
+                                data-toggle="modal"
+                                [attr.data-target]="'#imageModal' + gallery.nid"
+                                (click)="loadModalGallery(gallery.nid)"
+                            >
+                                {{ gallery.title }}
+                            </div>
+                            <div
+                                class="text"
+                                data-toggle="modal"
+                                [attr.data-target]="'#imageModal' + gallery.nid"
+                                (click)="loadModalGallery(gallery.nid)"
+                            >
+                                {{ gallery.count_items }}
+                                {{ getMediaTypeDesc(gallery.count_items) }}
+                            </div>
+                            <div class="actions">
+                                <download-button
+                                    [isGallery]="true"
+                                    [hidden]="isHidden(gallery)"
+                                    [id]="gallery.nid"
+                                    [isImage]="true"
+                                    [origin]="'galleries'"
+                                ></download-button>
+                                <div
+                                    [hidden]="isHidden(gallery)"
+                                    class="add-cart"
+                                    (click)="
+                                        addToCart(
+                                            gallery.nid,
+                                            gallery.title,
+                                            gallery.image_preview
+                                        )
+                                    "
+                                >
+                                    <img
+                                        [src]="
+                                            fileService.hasFileCart(gallery.nid)
+                                                ? '../../../assets/img/added-cart.svg'
+                                                : '../../../assets/img/add-cart.svg'
+                                        "
+                                        class="img-fluid"
+                                    />
+                                </div>
+                                <a
+                                    class="see-details"
+                                    data-toggle="modal"
+                                    [attr.data-target]="
+                                        '#imageModal' + gallery.nid
+                                    "
+                                    (click)="loadModalGallery(gallery.nid)"
+                                >
+                                    <span> {{ seeMore }} </span></a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngFor="let gallery of galleries">
+                    <app-modal-gallery
+                        *ngIf="selectedGallery == gallery.nid"
+                        [id]="gallery.nid"
+                        [title]="gallery.title"
+                        [thumb]="gallery.image_preview"
+                        [imageId]="
+                            typeGalery == 'imagem'
+                                ? gallery.image_id
+                                : undefined
+                        "
+                        [video]="typeGalery == 'video'"
+                        (onClose)="loadModalGallery(null)"
+                    ></app-modal-gallery>
+                </div>
+
+                <div class="col-12 text-center mt-5" *ngIf="showSeeAllButton">
+                    <button
+                        (click)="navigateTo()"
+                        title="Veja todas as galerias"
+                        class="see-more"
+                    >
+                        Veja todas as galerias de {{ typePage }}
+                    </button>
+                    <hr />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22.5" height="16.334" viewBox="0 0 22.5 16.334">
+  <g id="Grupo_529" data-name="Grupo 529" transform="translate(-230.75 -107.166)">
+    <g id="Grupo_498" data-name="Grupo 498" transform="translate(-0.5 -3.117)">
+      <circle id="Elipse_7" data-name="Elipse 7" cx="5" cy="5" r="5" transform="translate(237.5 110.283)" fill="#cd2b14"/>
+      <path id="Caminho_170" data-name="Caminho 170" d="M10.578,5a.2.2,0,0,1,.2.19V8.415l1.106-1.081a.205.205,0,0,1,.268-.014l.016.014h0l.642.628a.185.185,0,0,1,0,.267l-2.483,2.427a.2.2,0,0,1-.132.057h0a.2.2,0,0,1-.149-.054L7.556,8.228a.185.185,0,0,1,0-.267L8.2,7.334a.205.205,0,0,1,.281,0L9.589,8.415V5.191a.2.2,0,0,1,.2-.19Z" transform="translate(232.373 107.214)" fill="#fff" fill-rule="evenodd"/>
+    </g>
+    <g id="Grupo_497" data-name="Grupo 497" transform="translate(-5.25)">
+      <rect id="Retângulo_165" data-name="Retângulo 165" width="22.5" height="1.5" transform="translate(236 122)" fill="#5c5c5c"/>
+      <rect id="Retângulo_166" data-name="Retângulo 166" width="1.5" height="9.166" rx="0.75" transform="translate(236 114)" fill="#5c5c5c"/>
+      <rect id="Retângulo_167" data-name="Retângulo 167" width="1.5" height="9.166" rx="0.75" transform="translate(257 114)" fill="#5c5c5c"/>
+    </g>
+  </g>
+</svg>

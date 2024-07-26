@@ -1,0 +1,315 @@
+<div class="container pt-5" *ngIf="galleries.length > 0">
+    <div class="header-gallery">
+        <h2 class="title">
+            Galeria de {{ getMediaTypeDesc(galleries.length) }}
+            <span>{{ name }}</span>
+        </h2>
+
+        <div class="btn-actions">
+            <download-button
+                [label]="'Baixar galeria'"
+                [idList]="getAllGaleriesIds()"
+                [origin]="'galleries'"
+                [isGallery]="true"
+            ></download-button>
+            <div
+                class="add add-gallery"
+                (click)="addGalleriesToCart(getAllGaleriesIds())"
+            >
+                <img
+                    [src]="
+                        fileService.hasFileCart(galleries[0].gallery_id)
+                            ? '../../../assets/img/added-cart.svg'
+                            : '../../../assets/img/add-cart.svg'
+                    "
+                    class="img-fluid"
+                />
+                <div class="btn-add">Adicionar galeria</div>
+            </div>
+        </div>
+        <hr />
+    </div>
+
+    <ngx-slick-carousel
+        class="carousel carousel-desktop"
+        [config]="slideProductConfig"
+    >
+        <div ngxSlickItem *ngFor="let image of galleries">
+            <div *ngIf="type == 'image'" class="slide-moto">
+                <div
+                    class="video"
+                    data-toggle="modal"
+                    [attr.data-target]="'#imageModal' + image.image_id"
+                    (click)="loadModalGallery(image.image_id)"
+                >
+                    <img
+                        class="d-block w-100"
+                        src="{{ url }}{{ image.image_thumbnail }}"
+                        alt="{{ image.title }}"
+                    />
+                    <img
+                        *ngIf="type == 'videos'"
+                        class="icon-play"
+                        src="../../../assets/img/icon_play.png"
+                    />
+                </div>
+                <div class="name-gallery">
+                    {{ image.title }}
+                </div>
+                <div class="banner-content">
+                    <div
+                        class="add buttons"
+                        (click)="download('files', image.image_id, image.gallery_id)"
+                    >
+                        <img
+                            src="../../../assets/img/download.svg"
+                            class="img-fluid"
+                            alt="download"
+                        />
+                        <div class="btn-add">Baixar</div>
+                    </div>
+                    <div
+                        class="add buttons"
+                        (click)="
+                            addToCart(
+                                'files',
+                                image.image_id,
+                                image.title,
+                                image.image_preview,
+                                'Imagem',
+                                image.gallery_id
+                            )
+                        "
+                    >
+                        <img
+                            [src]="
+                                fileService.hasFileCart(image.image_id)
+                                    ? '../../../assets/img/added-cart.svg'
+                                    : '../../../assets/img/add-cart.svg'
+                            "
+                            class="img-fluid"
+                            alt="adicionar ao carrinho"
+                        />
+                        <div class="btn-add">Adicionar</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="type == 'video'" class="slide-moto">
+                <div
+                    class="video"
+                    data-toggle="modal"
+                    [attr.data-target]="'#imageModal' + image.video_id"
+                    (click)="loadModalGallery(image.video_id)"
+                >
+                    <img
+                        *ngIf="image.image_thumbnail"
+                        src="{{ url }}{{ image.image_thumbnail }}"
+                        class="img-fluid thumb"
+                        alt="{{ image.title }}"
+                    />
+                    <img
+                        *ngIf="!image.image_thumbnail"
+                        src="../../../assets/img/honda_logo_thumb.png"
+                        class="img-fluid thumb"
+                    />
+                    <img
+                        class="icon-play"
+                        src="../../../assets/img/icon_play.png"
+                    />
+                </div>
+                <div class="name-gallery">
+                    {{ image.title }}
+                </div>
+                <div class="banner-content">
+                    <div class="add buttons">
+                        <download-button
+                            [galleryId]="image.gallery_id"
+                            [label]="'Baixar'"
+                            [hidden]="isHidden(image)"
+                            [id]="image.video_large_id"
+                            [isImage]="true"
+                            [origin]="'files'"
+                        ></download-button>
+                    </div>
+                    <div
+                        class="add buttons"
+                        [hidden]="isHidden(image)"
+                        (click)="
+                            addToCart(
+                                'files',
+                                image.video_large_id,
+                                image.title,
+                                image.image_thumbnail,
+                                'Vídeo',
+                                image.gallery_id
+                            )
+                        "
+                    >
+                        <img
+                            [src]="
+                                fileService.hasFileCart(image.video_large_id)
+                                    ? '../../../assets/img/added-cart.svg'
+                                    : '../../../assets/img/add-cart.svg'
+                            "
+                            class="img-fluid"
+                            alt="adicionar ao carrinho"
+                        />
+                        <div class="btn-add">Adicionar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ngx-slick-carousel>
+    <ngx-slick-carousel
+        class="carousel carousel-mobile"
+        [config]="slideProductConfigMobile"
+    >
+        <div ngxSlickItem *ngFor="let image of galleries">
+            <div *ngIf="type == 'image'" class="slide-moto">
+                <div
+                    class="video"
+                    data-toggle="modal"
+                    [attr.data-target]="'#imageModal' + image.image_id"
+                    (click)="loadModalGallery(image.image_id)"
+                >
+                    <img
+                        class="d-block w-100"
+                        src="{{ url }}{{ image.image_thumbnail }}"
+                        alt="{{ image.title }}"
+                    />
+                    <img
+                        *ngIf="type == 'videos'"
+                        class="icon-play"
+                        src="../../../assets/img/icon_play.png"
+                    />
+                </div>
+                <div class="name-gallery">
+                    {{ image.title }}
+                </div>
+                <div class="banner-content">
+                    <div
+                        class="add buttons"
+                        (click)="download('files', image.image_id, image.gallery_id)"
+                    >
+                        <img
+                            src="../../../assets/img/download.svg"
+                            class="img-fluid"
+                        />
+                        <div class="btn-add">Baixar</div>
+                    </div>
+                    <div
+                        class="add buttons"
+                        (click)="
+                            addToCart(
+                                'files',
+                                image.image_id,
+                                image.title,
+                                image.image_preview,
+                                'Imagem',
+                                image.gallery_id
+                            )
+                        "
+                    >
+                        <img
+                            [src]="
+                                fileService.hasFileCart(image.image_id)
+                                    ? '../../../assets/img/added-cart.svg'
+                                    : '../../../assets/img/add-cart.svg'
+                            "
+                            class="img-fluid"
+                        />
+                        <div class="btn-add">Adicionar</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="type == 'video'" class="slide-moto">
+                <div
+                    class="video"
+                    data-toggle="modal"
+                    [attr.data-target]="'#imageModal' + image.video_id"
+                    (click)="loadModalGallery(image.video_id)"
+                >
+                    <img
+                        *ngIf="image.image_thumbnail"
+                        src="{{ url }}{{ image.image_thumbnail }}"
+                        class="img-fluid thumb"
+                        alt="{{ image.title }}"
+                    />
+                    <img
+                        *ngIf="!image.image_thumbnail"
+                        src="../../../assets/img/honda_logo_thumb.png"
+                        class="img-fluid thumb"
+                        alt="{{ image.title }}"
+                    />
+                    <img
+                        class="icon-play"
+                        src="../../../assets/img/icon_play.png"
+                    />
+                </div>
+                <div class="name-gallery">
+                    {{ image.title }}
+                </div>
+                <div class="banner-content">
+                    <div class="add buttons">
+                        <download-button
+                            [galleryId]="image.gallery_id"
+                            [label]="'Baixar'"
+                            [hidden]="isHidden(image)"
+                            [id]="image.video_large_id"
+                            [isImage]="true"
+                            [origin]="'files'"
+                        ></download-button>
+                    </div>
+                    <div
+                        class="add buttons"
+                        [hidden]="isHidden(image)"
+                        (click)="
+                            addToCart(
+                                'files',
+                                image.video_large_id,
+                                image.title,
+                                image.image_thumbnail,
+                                'Vídeo',
+                                image.gallery_id
+                            )
+                        "
+                    >
+                        <img
+                            [src]="
+                                fileService.hasFileCart(image.video_large_id)
+                                    ? '../../../assets/img/added-cart.svg'
+                                    : '../../../assets/img/add-cart.svg'
+                            "
+                            class="img-fluid"
+                        />
+                        <div class="btn-add">Adicionar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ngx-slick-carousel>
+
+    <div *ngIf="selectedGallery">
+        <div *ngFor="let image of galleries; let idx = index">
+            <app-modal-gallery
+                *ngIf="type == 'image' && selectedGallery == image.image_id"
+                [id]="image.gallery_id"
+                [title]="image.title"
+                [imageId]="image.image_id"
+                [initialIndex]="idx"
+            ></app-modal-gallery>
+            
+            <app-modal-gallery
+                *ngIf="
+                    type == 'video' && selectedGallery == image.video_id
+                "
+                [id]="image.gallery_id"
+                [title]="image.title"
+                [thumb]="image.image_thumbnail"
+                [imageId]="image.video_id"
+                [initialIndex]="idx"
+                [video]="true"
+            ></app-modal-gallery>
+        </div>
+    </div>
+</div>

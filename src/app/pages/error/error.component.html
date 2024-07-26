@@ -1,0 +1,17 @@
+<app-breadcrumb [routeParent]="" [nameParent]="" [nameChildren]="'Erro 404'" [type]="'container'"></app-breadcrumb>
+<div class="container">
+    <div class="error">
+        <!-- <div class="bg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="719" height="422" viewBox="0 0 719 422">
+                <text id="_404" data-name="404" fill="#f2f2f2" font-size="320" font-family="Roboto-Bold, Roboto"
+                    font-weight="700" opacity="0.701">
+                    <tspan x="84.109" y="335">404</tspan>
+                </text>
+            </svg>
+        </div> -->
+        <div class="block-error" *ngFor="let item of error">
+            <h3>{{ item.title }}</h3>
+            <div class="text" [innerHTML]="item.body"></div>
+        </div>
+    </div>
+</div>

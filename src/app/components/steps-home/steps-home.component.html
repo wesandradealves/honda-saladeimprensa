@@ -1,0 +1,42 @@
+<div class="container" *ngIf="steps.length > 0">
+    <div class="steps" *ngFor="let step of steps">
+        <div class="wrapper-title">
+            <h3 class="title">
+                {{step.title}}
+            </h3>
+
+            <div class="subtitle">
+                {{step.subtitle}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4" *ngIf="step.text_1">
+                <div class="step-box">
+                    <div class="step-number">
+                        1
+                    </div>
+                    <div class="step-description" [innerHTML]="step.text_1">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" *ngIf="step.text_2">
+                <div class="step-box">
+                    <div class="step-number">
+                        2
+                    </div>
+                    <div class="step-description" [innerHTML]="step.text_2">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" *ngIf="step.text_3">
+                <div class="step-box">
+                    <div class="step-number">
+                        3
+                    </div>
+                    <div class="step-description" [innerHTML]="step.text_3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

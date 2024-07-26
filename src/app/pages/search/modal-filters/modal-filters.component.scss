@@ -1,0 +1,169 @@
+@import "../../../../assets/scss/variables";
+
+.modal {
+    padding: 0 !important;
+    cursor: initial;
+    z-index: 999999;
+
+    &.show {
+        display: block;
+    }
+
+    .modal-dialog {
+        min-height: 100% !important;
+        height: 100% !important;
+        max-width: 100%;
+        margin: auto;
+        cursor: initial;
+
+        .modal-content {
+            background-color: rgba($black, 0.8);
+            margin: auto;
+            width: 100%;
+            height: auto;
+            flex-direction: initial;
+            .filter-content {
+                background-color: $color-primary;
+                border-radius: $radius;
+                margin: auto;
+                max-width: 414px;
+                height: auto;
+
+                .title {
+                    font-size: $font-md;
+                    border-bottom: 3px solid $orange;
+                    padding: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                .item {
+                    padding-left: 2rem;
+                    border-bottom: $rule-secondary;
+                }
+                .close-menu {
+                    border-top: 1px solid $orange;
+                    background-color: $color-primary;
+                    padding-top: 2rem;
+                    padding-bottom: 2.5rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .btn-filter {
+                        background-color: $color-secondary;
+                        border-radius: $radius;
+                        width: 80%;
+                        height: 2.5rem;
+                        color: $color-primary;
+                        margin-bottom: 1rem;
+                    }
+                }
+
+                .btn-reset, .btn-close {
+                    font-size: $font-xs;
+                    line-height: 16px;
+                    color: #cd2b14;
+                    border-bottom: 1px solid #cd2b14;
+                    padding: 0;
+                    height: 1.25rem;
+            
+                    @media (min-width: $lg) {
+                        width: 2.406rem;
+                    }
+                }
+
+                .box-filters {
+
+                    .filters-list {
+                        color: $gray-500;
+
+                        .col {
+                            margin: 0;
+                            padding: 1.5rem 1rem;
+                            border-bottom: 1px solid #D3D3D3;
+                        }
+
+                        label {
+                            font-size: $font-xs;
+                            font-weight: bold;
+                            margin: 0;
+                        }
+
+                        .filters-items {
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            grid-gap: 1rem;
+                            padding: 1rem 0;                        
+
+                            .styled-checkbox {
+                                position: absolute;
+                                opacity: 0; 
+                                
+                              
+                                & + label {
+                                  position: relative;
+                                  cursor: pointer;
+                                  padding: 0;
+                                  font-weight: normal !important;
+                                    align-items: center;
+                                    display: flex;
+                                }
+                            
+                                & + label:before {
+                                  content: '';
+                                  margin-right: 10px;
+                                  display: inline-block;
+                                  vertical-align: text-top;
+                                  width: 15px;
+                                  height: 15px;
+                                  background: transparent;
+                                  border: 1px solid #707070;
+                                  border-radius: 2px;
+                                }
+                              
+                                &:checked + label:before {
+                                  background: $orange;
+                                  border: 1px solid $orange;
+                                }
+                                
+                                &:checked + label:after {
+                                  content: '';
+                                  position: absolute;
+                                  left: 3px;
+                                  top: 7px;
+                                  background: white;
+                                  width: 2px;
+                                  height: 2px;
+                                  box-shadow: 
+                                    2px 0 0 white,
+                                    4px 0 0 white,
+                                    4px -2px 0 white,
+                                    4px -4px 0 white,
+                                    4px -6px 0 white,
+                                    4px -8px 0 white;
+                                  transform: rotate(45deg);
+                                }
+                              }
+                        }
+
+                        .date-range {
+                            display: inline-flex;
+                            padding: 0 0.5rem;
+                            align-items: center;
+                            
+                            span {
+                                margin: 0 0.5rem;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .modal-dialog-centered {
+        min-height: 100% !important;
+    }
+}

@@ -1,0 +1,115 @@
+<div class="newsroom-menu" (mouseout)="(!showSubmenu)">
+    <nav class="dropdown" *ngFor="let page of pages">
+        <button
+            class="btn-newsroom dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+            aria-expanded="false"
+            arias-haspopup="true"
+            appGtmEvent
+            gtm-category="header"
+            gtm-action="header"
+            gtm-label="{{ page.title }}"
+        >
+            <img
+                class="img-fluid mr-2"
+                src="assets/img/icon_arrow.png"
+                alt="Arrow Button"
+            />
+            {{ page.title }}
+        </button>
+        <div
+            class="dropdown-menu"
+            aria-labelledby="dropdownMenuButton"
+            *ngIf="page.below?.length"
+        >
+            <div
+                class="menu-item"
+                [class.selected]="
+                    isMobile && showSubmenu && pagebelow.title == 'Corporativo'
+                "
+                *ngFor="let pagebelow of page.below"
+            >
+                <a
+                    *ngIf="pagebelow.title != 'Corporativo'"
+                    class="item-link d-block"
+                    routerLink="{{ pagebelow.relative }}"
+                    routerLinkActive="active"
+                    emptyMask
+                    appGtmEvent
+                    gtm-category="header"
+                    gtm-action="header"
+                    gtm-label="{{ pagebelow.title }}"
+                >
+                    {{ pagebelow.title }}
+                    <button
+                        class="arrow-btn"
+                        *ngIf="pagebelow.below"
+                        (click)="toggleSubmenu()"
+                        (mouseover)="onMenuMouseOver()"
+                    >
+                        <img
+                            class="img-fluid mr-2"
+                            src="assets/img/icon_arrow.png"
+                            alt="Arrow Button"
+                        />
+                    </button>
+                    <button
+                        class="arrow-btn"
+                        *ngIf="!pagebelow.below"
+                        (mouseover)="closeMenu()"
+                    ></button>
+                </a>
+                <div
+                    *ngIf="pagebelow.title == 'Corporativo'"
+                    class="item-link d-block"
+                    (click)="$event.stopPropagation()"
+                >
+                    {{ pagebelow.title }}
+                    <div
+                        class="arrow-btn"
+                        *ngIf="pagebelow.below"
+                        (click)="toggleSubmenu()"
+                        (mouseover)="onMenuMouseOver()"
+                    >
+                        <img
+                            class="img-fluid mr-2"
+                            src="assets/img/icon_arrow.png"
+                            alt="Arrow Button"
+                        />
+                    </div>
+                    <button class="arrow-btn" *ngIf="!pagebelow.below"></button>
+                </div>
+                <div
+                    class="submenu"
+                    *ngIf="pagebelow.below && pagebelow.below.length > 0"
+                    [ngClass]="showSubmenu ? 'show-menu' : 'd-none'"
+                    (mouseleave)="closeMenu()"
+                    (mouseover)="showMenu()"
+                >
+                    <div
+                        class="submenu-row mt-0"
+                        *ngFor="let subtitle of pagebelow.below"
+                        (mouseover)="showMenu()"
+                    >
+                        <a
+                            [routerLink]="subtitle.relative"
+                            routerLinkActive="active"
+                            (mouseover)="showMenu()"
+                            appGtmEvent
+                            gtm-category="header"
+                            gtm-action="header"
+                            gtm-label="{{ pagebelow.title }} - {{
+                                subtitle.title
+                            }}"
+                        >
+                            <div class="submenu-item">
+                                {{ subtitle.title }}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

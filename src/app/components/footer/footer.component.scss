@@ -1,0 +1,128 @@
+@import "../../../assets/scss/variables";
+
+/*Footer*/
+footer {
+    color: $color-primary;
+    @media only screen and (max-width: 1017px) {
+        height: 190px;
+    }
+    // Main Footer
+    .main-footer {
+        background-color: $color-bg-secondary;
+        .footer-menu {
+            min-height: 3.75rem;
+            .btn-newsroom {
+                width: 100vw;
+                height: 100%;
+                font-size: $font-md;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                color: $color-primary !important;
+                border-bottom: $rule-danger;
+                img {
+                    margin-right: 1.35rem;
+                    margin-left: 0;
+                }
+                &::after {
+                    display: none;
+                }
+                @media (min-width: $lg) {
+                    width: 100%;
+                    border-right: $rule-danger;
+                    padding-right: 3rem;
+                    text-align: left;
+                }
+            }
+            button[aria-expanded="true"] {
+                background-color: $black !important;
+                border: 0;
+                img {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        .social {
+            min-height: 3.75rem;
+            font-size: $font-md;
+        }
+        .lg-device {
+            @media (max-width: $lg) {
+                display: none !important;
+            }
+        }
+    }
+    // Sub Footer
+    .copyright {
+        background: black;
+        color: #ffffff;
+        font-size: 1.123em;
+        padding: 10px;
+        @media only screen and (max-width: 1017px) {
+            .copyright {
+                padding: 0;
+            }
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media only screen and (max-width: 1017px) {
+            .wrapper {
+                display: block;
+                text-align-last: start;
+                padding: 0 10px;
+            }
+        }
+
+        .text-span {
+            padding-left: 3px;
+        }
+
+        @media only screen and (max-width: 1017px) {
+            .info {
+                text-align-last: center;
+                margin-bottom: 10px;
+            }
+        }
+
+        footer .copyright img {
+            height: 50px;
+            vertical-align: middle;
+        }
+
+
+        .legal {
+            .navigation {
+                gap: 8px;
+                > * {
+                    border-left: 1px white solid;
+                    @media only screen and (max-width: 992px) {
+                        &:first-child {
+                            border-left: 0;
+                        }
+                    }
+                    padding-left: 8px;
+                }
+            }
+
+            @media only screen and (min-width: 992px) {
+                gap: 8px;
+            }
+
+            @media only screen and (max-width: 768px) {
+                display: block;
+                border-top: 1px solid #ffffff;
+                letter-spacing: 2px;
+                padding-top: 10px;
+            }            
+        }
+    }
+}

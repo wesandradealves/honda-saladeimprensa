@@ -1,0 +1,77 @@
+<div class="breadcrumb-wrapper">
+    <nav
+        *ngIf="type == 'column'"
+        class="row"
+        role="navigation"
+        aria-labelledby="system-breadcrumb"
+        aria-label="breadcrumb"
+    >
+        <div class="col-md-1"></div>
+        <div class="col-md-10" *ngIf="!release">
+            <ol class="breadcrumb breadcrumb-release">
+                <li class="breadcrumb-item">
+                    <a routerLink="/home">Home</a>
+                </li>
+                <li class="breadcrumb-item" *ngIf="intermediateRoute">
+                    <a
+                        routerLink="/{{ routeParent }}/{{ intermediateRoute }}"
+                        >{{ intermediateName }}</a
+                    >
+                </li>
+                <li class="breadcrumb-item" *ngIf="nameParent">
+                    <a routerLink="/{{ routeParent }}">{{ nameParent }}</a>
+                </li>
+                <li class="breadcrumb-item child">
+                    {{ nameChildren }}
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-10" *ngIf="release">
+            <ol class="breadcrumb breadcrumb-release">
+                <li class="breadcrumb-item">
+                    <a routerLink="/home">Home</a>
+                </li>
+                <li class="breadcrumb-item" *ngIf="!releaseCorporate && releaseSegment">
+                    <a routerLink="/{{ segmentName }}">{{ releaseSegment }}</a>
+                </li>
+                <li class="breadcrumb-item" *ngIf="releaseCorporate">
+                    <a routerLink="{{ releaseCorporate }}">{{
+                        releaseCorporateTitle
+                    }}</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a routerLink="/ultimos-releases/{{ segmentId }}"
+                        >Releases</a
+                    >
+                </li>
+                <li class="breadcrumb-item child">
+                    {{ nameChildren }}
+                </li>
+            </ol>
+        </div>
+        <div class="col-md-1"></div>
+    </nav>
+    <nav
+        *ngIf="type == 'container'"
+        role="navigation"
+        aria-labelledby="system-breadcrumb"
+        aria-label="breadcrumb"
+    >
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a routerLink="/home">Home</a>
+                </li>
+                <li class="breadcrumb-item" *ngIf="nameParent">
+                    <a *ngIf="routeParent" routerLink="/{{ routeParent }}">{{
+                        nameParent
+                    }}</a>
+                    <div *ngIf="!routeParent">{{ nameParent }}</div>
+                </li>
+                <li class="breadcrumb-item child">
+                    {{ nameChildren }}
+                </li>
+            </ol>
+        </div>
+    </nav>
+</div>

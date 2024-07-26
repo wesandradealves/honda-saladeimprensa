@@ -1,0 +1,157 @@
+<header class="m-0">
+    <div class="navbar">
+        <div class="menu col-6">
+            <div class="menu-icon pr-4">
+                <honda-menu></honda-menu>
+            </div>
+            <newsroom-menu class="header-menu"></newsroom-menu>
+        </div>
+        <div
+            class="brand d-flex justify-content-center align-items-center mx-auto col-lg-12">
+            <a class="honda-logo d-inline-block" routerLink="/home">
+                <img
+                    class="img-fluid"
+                    src="assets/img/hondalogov2.png"
+                    alt="Honda Logo" />
+            </a>
+        </div>
+        <div class="search box-my-files col-6">
+            <div>
+                <button
+                    #searchIcon
+                    class="search-icon"
+                    [class.active]="searchOpened"
+                    (click)="searchOpened = !searchOpened"
+                    appGtmEvent
+                    gtm-category="header"
+                    gtm-action="procurar"
+                    gtm-label="procurar-clique"></button>
+            </div>
+            <div #modalButton class="box-my-files">
+                <button
+                    class="btn-files"
+                    (click)="openModalFiles()"
+                    appGtmEvent
+                    gtm-category="header"
+                    gtm-action="meus arquivos"
+                    gtm-label="meus arquivos-clique">
+                    <img
+                        *ngIf="!counter"
+                        class="img-fluid"
+                        src="assets/img/icon_folder.png"
+                        alt="Meus arquivos" />
+                    <img
+                        *ngIf="counter"
+                        class="img-fluid icon-folder-download"
+                        src="assets/img/icon-folder-download.svg"
+                        alt="Meus arquivos" />
+                    <span class="text d-none d-lg-inline-block">
+                        Meus arquivos
+                    </span>
+                    <span class="counter"> ({{ counter }}) </span>
+                </button>
+            </div>
+        </div>
+        <div
+            #modalContainer
+            *ngIf="showModalFiles"
+            class="modal-files"
+            [ngClass]="{ 'no-files': !counter }">
+            <div class="modal-files-content">
+                <p *ngIf="!counter" class="no-files-message">
+                    Você ainda não adicionou arquivos na sua pasta.
+                </p>
+                <div *ngIf="counter" class="myfiles-list">
+                    <div
+                        class="myfiles-item"
+                        *ngFor="let file of myfiles; let i = index">
+                        <div class="image">
+                            <img
+                                [src]="
+                                    file.info.thumb
+                                        ? url + file.info.thumb
+                                        : '/assets/img/honda_logo_thumb.png'
+                                "
+                                class="img-fluid" />
+                        </div>
+                        <div class="myfiles-item-content">
+                            <div class="description">
+                                <h6 class="title">{{ file.info.title }}</h6>
+                                <span>{{ file.info.type }}</span>
+                            </div>
+                            <a
+                                class="link-delete"
+                                (click)="removeFile(i)"
+                                appGtmEvent
+                                gtm-category="header"
+                                gtm-action="meus arquivos"
+                                gtm-label="remover: {{ file.info.title }}">
+                                <span> Remover </span></a>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="counter" class="box-download-files">
+                    <div class="buttons-wrapper">
+                        <a
+                            class="link-delete"
+                            (click)="open()"
+                            appGtmEvent
+                            gtm-category="header"
+                            gtm-action="meus arquivos"
+                            gtm-label="remover tudo">
+                            <span> Remover todos os arquivos da pasta </span>
+                        </a>
+                        <a
+                            href="{{ zip }}"
+                            id="link-zip"
+                            class="link-zip"
+                            download>{{ zip }}</a>
+                        <button
+                            class="btn"
+                            (click)="downloadAllFiles()"
+                            appGtmEvent
+                            gtm-category="header"
+                            gtm-action="meus arquivos"
+                            gtm-label="download">
+                            <ngx-loading
+                                [show]="isLoading"
+                                [config]="{
+                                    backdropBackgroundColour: '#ffffff',
+                                    primaryColour: '#cd2b14',
+                                    secondaryColour: '#cd2b14',
+                                    tertiaryColour: '#cd2b14'
+                                }">
+                            </ngx-loading>
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div
+        #searchContainer
+        class="search-container"
+        [class.active]="searchOpened">
+        <form>
+            <input
+                (change)="toSearch($event)"
+                type="text"
+                id="edit-search-api-fulltext-header"
+                name="term"
+                maxlength="128"
+                placeholder="O que você procura?"
+                autocomplete="off" />
+            <div class="button-container">
+                <input
+                    type="submit"
+                    value="Buscar"
+                    (click)="search()"
+                    appGtmEvent
+                    gtm-category="header"
+                    gtm-action="procurar"
+                    gtm-label="buscar: {{ searchValue }}" />
+            </div>
+        </form>
+    </div>
+</header>

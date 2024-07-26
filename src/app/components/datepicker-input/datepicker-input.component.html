@@ -1,0 +1,50 @@
+<div class="input-group">
+    <input class="form-control" name="dp" [(ngModel)]="dateToInput" mask="99/99/9999" (input)="onInputDate()">
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="toggle()" type="button"></button>
+    </div>
+
+    <div class="datepicker-inline" [hidden]="!show">
+        <div class="datepicker-custom-content">
+            <img class="bg" src="./../../../assets/img/background-calendar.png" />
+            <ngb-datepicker (click)="$event.stopPropagation()" [(ngModel)]="date" (dateSelect)="onDateSelection($event)" class="custom-datepicker" #dp navigation="none" [dayTemplate]="customDay" [weekdays]="false">
+                <ng-template ngbDatepickerContent>
+                    <div *ngFor="let month of dp.state.months">
+                        <div class='custom-navigation'>
+                            <button type="button" class="btn" (click)="navigateYear(-1);">
+                                <i class="icon-nav last"></i>
+                                <i class="icon-nav last"></i>
+                            </button>
+                            <button type="button" class="btn" (click)="navigate(-1);">
+                                <i class="icon-nav last"></i>
+                            </button>
+                            <span>{{ i18n.getMonthFullName(month.month) }} {{ month.year }}</span>
+                            <button type="button" class="btn" (click)="navigate(1);">
+                                <i class="icon-nav"></i>
+                            </button>
+                            <button type="button" class="btn" (click)="navigateYear(1);">
+                                <i class="icon-nav next"></i>
+                                <i class="icon-nav next"></i>
+                            </button>
+                        </div>
+                        <div class="ngb-dp-week weeks">
+                            <div *ngFor="let week of weekdays">
+                                {{week}}
+                            </div>
+                        </div>
+
+                        <ngb-datepicker-month class="month" [month]="month"></ngb-datepicker-month>
+
+                    </div>
+                </ng-template>
+            </ngb-datepicker>
+        </div>
+    </div>
+    <ng-template #customDay let-date let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled"
+        let-focused="focused">
+        <span class="custom-day" [class.bg-primary]="selected"
+            [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
+            {{ date.day }}
+        </span>
+    </ng-template>
+</div>

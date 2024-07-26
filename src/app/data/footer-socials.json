@@ -1,0 +1,65 @@
+[
+    {
+        "key": "62b6233b-2831-4148-900f-daff07d7b063",
+        "title": "Facebook",
+        "description": null,
+        "uri": "https:\/\/www.facebook.com\/Honda",
+        "alias": null,
+        "external": true,
+        "absolute": "https:\/\/www.facebook.com\/Honda",
+        "relative": "https:\/\/www.facebook.com\/Honda",
+        "existing": true,
+        "weight": "-50",
+        "expanded": false,
+        "enabled": true,
+        "uuid": null,
+        "options": {
+            "menu_icon": {
+                "fid": false
+            },
+            "external": true
+        }
+    },
+    {
+        "key": "d312a1b5-ccb1-4ffc-aca9-f54dfd5f24e3",
+        "title": "Youtube",
+        "description": null,
+        "uri": "https:\/\/www.youtube.com\/channel\/UClVRjqYSk3jDEQ2vsiqRmEQ",
+        "alias": null,
+        "external": true,
+        "absolute": "https:\/\/www.youtube.com\/channel\/UClVRjqYSk3jDEQ2vsiqRmEQ",
+        "relative": "https:\/\/www.youtube.com\/channel\/UClVRjqYSk3jDEQ2vsiqRmEQ",
+        "existing": true,
+        "weight": "-49",
+        "expanded": false,
+        "enabled": true,
+        "uuid": null,
+        "options": {
+            "menu_icon": {
+                "fid": false
+            },
+            "external": true
+        }
+    },
+    {
+        "key": "6f091212-e53b-4218-b835-3ccd0a3febe6",
+        "title": "linkedin",
+        "description": null,
+        "uri": "https:\/\/br.linkedin.com\/company\/honda-brasil",
+        "alias": null,
+        "external": true,
+        "absolute": "https:\/\/br.linkedin.com\/company\/honda-brasil",
+        "relative": "https:\/\/br.linkedin.com\/company\/honda-brasil",
+        "existing": true,
+        "weight": "-48",
+        "expanded": false,
+        "enabled": true,
+        "uuid": null,
+        "options": {
+            "menu_icon": {
+                "fid": false
+            },
+            "external": true
+        }
+    }
+]

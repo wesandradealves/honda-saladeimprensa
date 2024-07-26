@@ -1,0 +1,77 @@
+@import "./../../../assets/scss/variables";
+
+.banner {
+    position: relative;
+    display: flex;
+    height: 31.25rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: darkgray;
+    ::ng-deep.overlay{
+        background-color: rgba(0, 0, 0, 0.25) !important;
+    }
+}
+.banner-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+
+    .content {
+        margin-top: 3.75rem;
+        padding-left: 1.5rem;
+        padding-right: 1.25rem;
+        position: relative;
+        @media (min-width: $lg) {
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-left: 3.5rem;
+            padding-bottom: 3rem;
+            max-width: 54%;
+        }
+        .banner-link {
+            display: block;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .tag {
+            margin-bottom: 1rem;
+            float: left;
+            margin-right: 15px;
+
+            span {
+                font-size: $font-xs;
+                font-weight: bold;
+                color: $color-primary;
+                background-color: $color-secondary;
+                border-radius: $radius;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 0.395rem;
+                padding-bottom: 0.35rem;
+            }
+        }
+
+        .title {
+            color: $color-primary;
+            font-family: $font-stack-condensed;
+            font-size: $font-xl-mobile;
+            line-height: 1.25em;
+            clear: both;
+
+            @media (min-width: $lg) {
+                font-size: $font-xl;
+            }
+        }
+
+        .subtitle {
+            @extend .title;
+            font-size: 1.75rem;
+        }
+    }
+}

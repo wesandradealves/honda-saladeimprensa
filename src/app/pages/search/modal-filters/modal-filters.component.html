@@ -1,0 +1,71 @@
+<div
+  class="modal"
+  [ngClass]="{'show': show}"
+  id="filterModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document" data-dismiss="modal">
+    <div class="modal-content modal-dialog-centered">
+      <div class="container">
+        <div class="filter-content">
+          <div class="filter-content-row mt-0">
+            <div class="title">
+              <strong>Filtrar resultados de busca:</strong>
+              <button class="btn-reset" (click)="clearFilters()">
+                Limpar
+              </button>
+            </div>
+            <div class="box-filters">
+              <div class="filters-list">
+                <div class="col">
+                  <div class="filters-category">
+                    <label>Categoria:</label>
+                    <div class="filters-items">
+                      <div class="group-checkbox form-check" *ngFor="let cat of categories, let i = index">
+                        <input class="styled-checkbox" id="mobile-styled-checkbox-cat-{{i}}" type="checkbox" name="categories[]" [checked]="cat.checked" [value]="cat.value" (change)="emitChangeCategory($event)">
+                        <label for="mobile-styled-checkbox-cat-{{i}}">
+                            {{cat.label}}
+                        </label>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="filters-type">
+                    <label>Tipo de arquivo:</label>
+                    <div class="filters-items">
+                      <div class="group-checkbox form-check" *ngFor="let type of types, let i = index">
+                        <input class="styled-checkbox" id="mobile-styled-checkbox-type-{{i}}" type="checkbox" name="types[]" [checked]="type.checked" [value]="type.value" (change)="emitChangeType($event)">
+                        <label for="mobile-styled-checkbox-type-{{i}}">
+                            {{type.label}}
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="filters-calendar">
+                    <label>Período:</label>
+                    <div class="date-range">
+                      <datepicker-input (onChange)=emitChangeFromDate($event) [date]="dateFrom"></datepicker-input>
+                      <span>até</span>
+                      <datepicker-input (onChange)=emitChangeToDate($event) [date]="dateTo"></datepicker-input>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="close-menu text-center">
+                <button class="btn-filter" (click)="emitFilter()">
+                    Aplicar filtros
+                  </button>
+              <button class="btn-close" type="button" (click)="onCloseModal()">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

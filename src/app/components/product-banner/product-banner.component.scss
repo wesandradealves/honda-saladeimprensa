@@ -1,0 +1,104 @@
+@import "./../../components/home-banner/home-banner.component";
+.link-zip{
+    position: relative !important;
+    z-index: -999!important;
+}
+.banner {
+    .carousel-indicators {
+        z-index: 2;
+        ::ng-deep.overlay{
+            background-color: rgba(0, 0, 0, 0.25) !important;
+        }
+    }
+    .banner-content {
+        .content {
+            width: 100%;
+            max-width: 54%;
+            text-align: left !important;
+            @media (max-width: $md) {   
+                max-width: 100%  !important;
+            }
+            .title {
+                font-size: calc(2.125rem - 5px);
+                text-shadow: 0px 0px 10px #0000009A;
+
+                @media (min-width: $lg) {
+                    font-size: 3rem;
+                }
+            }
+
+            .subtitle {
+                font-size: 1.6rem;
+                line-height: 36px;
+                text-align: left;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                text-align: center;
+                text-shadow: 0px 0px 10px #0000009A;
+
+                @media (max-width: $md) {
+                    font-size: 20px;
+                }
+            }
+
+            &.corporative {
+                text-align: left;
+
+                .subtitle {
+                    text-align: left;
+                    margin-top: 10px;
+                }
+
+                .press-kit {
+                    border-radius: 4px;
+                    background: #CD2B14;
+                    width: fit-content;
+                    margin-top: 20px;
+                    padding: 10px 28px;
+                    display: flex;
+                    cursor: pointer;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    .icon {
+                        margin-right: 8px;
+
+                        img {
+                            width: 25px;
+                            height: 18px;
+                        }
+                    }
+
+                    .title {
+                        font-size: 16px;
+                        line-height: 21px;
+                        color: #fff;
+                        font-family: $font-stack-primary !important;
+                    }
+                }
+            }
+
+            &.global {
+                .subtitle {
+                    text-align: center;
+                    border-radius: 4px;
+                    background: #CD2B14;
+                    width: fit-content;
+                    margin: 10px auto 0px auto;
+                    padding: 10px 28px;
+                    text-transform: uppercase;
+                }
+
+                text-align: center;
+            }
+
+            &.event {
+                .subtitle {
+                    text-align: left;
+                }
+
+                text-align: left;
+            }
+        }
+    }
+}
